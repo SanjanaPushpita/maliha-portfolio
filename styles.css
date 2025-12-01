@@ -112,6 +112,26 @@ img {
     align-items: center;
 }
 
+.hero h1 {
+    margin: 0.4rem 0 0;
+    font-size: clamp(2.4rem, 6vw, 3.4rem);
+    line-height: 1.1;
+    color: var(--text-primary);
+}
+
+.hero-name {
+    display: block;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+}
+
+.hero-headline {
+    display: block;
+}
+
 .eyebrow {
     text-transform: uppercase;
     letter-spacing: 0.32em;
