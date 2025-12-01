@@ -16,9 +16,10 @@
             <button class="color-toggle" id="colorToggle" aria-label="Toggle accent color">🎨</button>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
-                <li><a href="#research">Research</a></li>
+                <li><a href="#research">Focus</a></li>
                 <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
+                <li><a href="#ongoing-research">Ongoing Research</a></li>
+                <li><a href="#web-builds">Web Builds</a></li>
                 <li><a href="#publications">Publications</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -26,10 +27,10 @@
         <div class="hero">
             <div class="hero-copy">
                 <p class="eyebrow">AI Researcher · Medical Imaging · Responsible ML</p>
-                <h1>Hi, I am Maliha Sanjana.</h1>
-                <p class="lead">Computer Science & Engineering graduate crafting trustworthy AI that bridges medical imaging, agritech vision systems, and applied machine learning.</p>
+                <h1>AI that clinicians and growers can trust.</h1>
+                <p class="lead">Computer Science & Engineering graduate blending multi-modal imaging, agritech vision, and model governance to deliver explainable, field-ready decision support.</p>
                 <div class="hero-links">
-                    <a class="btn" href="#contact">Connect</a>
+                    <a class="btn" href="#contact">Work Together</a>
                     <a class="btn ghost" href="https://github.com/SanjanaPushpita" target="_blank" rel="noopener">GitHub</a>
                     <a class="btn ghost" href="https://linkedin.com/in/malihasanjana" target="_blank" rel="noopener">LinkedIn</a>
                     <a class="btn ghost" href="https://scholar.google.com/citations?user=LWN8Z1cAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
@@ -50,7 +51,7 @@
                 <h2>About</h2>
             </div>
             <div class="section-content">
-                <p>Recent Computer Science and Engineering graduate from Northern University Bangladesh, passionate about responsible AI for healthcare. I blend deep learning research with deployable engineering, fine-tuning architectures like SegUNet and MedSAM, and validating them through reproducible pipelines, simulations, and field-ready diagnostics.</p>
+                <p>Computer Science and Engineering graduate shaping responsible AI for healthcare and climate resilience. I architect reproducible pipelines that fuse panoramic radiographs, CT volumes, agritech imagery, and structured health data—pairing interpretable vision models with governance checks so clinicians and growers can act with confidence.</p>
                 <ul class="quick-stats">
                     <li><strong>Location:</strong> Uttara, Dhaka-1230, Bangladesh</li>
                     <li><strong>Email:</strong> <a href="mailto:sanjana_41210200009@nub.ac.bd">sanjana_41210200009@nub.ac.bd</a></li>
@@ -116,10 +117,10 @@
             </div>
         </section>
 
-        <section id="projects" class="section">
+        <section id="ongoing-research" class="section">
             <div class="section-heading">
-                <span class="section-eyebrow">Builds</span>
-                <h2>Highlighted Projects</h2>
+                <span class="section-eyebrow">In Progress</span>
+                <h2>Ongoing Research</h2>
             </div>
             <div class="section-content grid">
                 <article class="card card-project">
@@ -127,6 +128,7 @@
                         <h3>MedSAM FLARE22 Tumor Segmentation</h3>
                         <a href="https://github.com/SanjanaPushpita/medsam-flare22-segmentation" target="_blank" rel="noopener">GitHub</a>
                     </header>
+                    <div class="project-stat">Validation Dice ≈ 0.84 · Accuracy ≈ 0.98</div>
                     <p>Fine-tuned MedSAM ViT-B on MICCAI FLARE22 CT scans with automated slice caching, MONAI loaders, and reusable evaluation artifacts for focal liver segmentation.</p>
                 </article>
                 <article class="card card-project">
@@ -134,14 +136,32 @@
                         <h3>PlantVillage Leaf Disease Detection</h3>
                         <a href="https://github.com/SanjanaPushpita/PlantVillage-Leaf-Disease-Lab" target="_blank" rel="noopener">GitHub</a>
                     </header>
+                    <div class="project-stat">EfficientNet-B0 Test Accuracy 99.25%</div>
                     <p>Ensembled EfficientNet-B0, DenseNet121, ResNet-18, and ResNet34 to classify 38 crop/disease categories with reproducible PyTorch pipelines and rich diagnostics.</p>
                 </article>
+                <article class="card card-project">
+                    <header>
+                        <h3>Heart Disease Prediction</h3>
+                        <a href="https://github.com/SanjanaPushpita/heart-disease-prediction-ml" target="_blank" rel="noopener">GitHub</a>
+                    </header>
+                    <div class="project-stat">Gradient Boosting · Accuracy 0.8804 · Precision 0.87 · Recall 0.92</div>
+                    <p>Evaluated classical ML models on clinical risk factors, deploying Gradient Boosting with feature governance dashboards to surface cardiology risk signals quickly.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="web-builds" class="section">
+            <div class="section-heading">
+                <span class="section-eyebrow">Product</span>
+                <h2>Web Builds</h2>
+            </div>
+            <div class="section-content grid">
                 <article class="card card-project">
                     <header>
                         <h3>BookNook</h3>
                         <a href="https://github.com/SanjanaPushpita/BookNook" target="_blank" rel="noopener">GitHub</a>
                     </header>
-                    <p>Responsive e-commerce interface with catalog search, filterable dashboards, and secure checkout flows, designed for seamless book-shopping journeys.</p>
+                    <p>Responsive book commerce experience with guided discovery, inventory insights, and secure checkout flows tailored for avid readers.</p>
                 </article>
             </div>
         </section>
@@ -196,23 +216,56 @@
                         <span>TensorFlow</span>
                         <span>OpenCV</span>
                         <span>Grad-CAM</span>
+                        <span>scikit-learn</span>
                         <span>Pandas</span>
                         <span>NumPy</span>
                         <span>PostgreSQL</span>
+                        <span>Power BI</span>
+                        <span>Streamlit</span>
                         <span>LaTeX</span>
                         <span>Google Colab</span>
+                        <span>AI Agent Workflows</span>
+                        <span>Experiment Tracking</span>
                         <span>Data Structures & Algorithms</span>
                         <span>Medical Imaging</span>
                     </div>
                 </article>
                 <article class="card">
                     <h3>Certifications</h3>
-                    <ul class="link-list">
-                        <li><a href="https://www.credly.com/badges/cc4ae314-e1ea-41a0-b38b-431920e71b8a/linked_in_profile" target="_blank" rel="noopener">Google Cybersecurity</a></li>
-                        <li><a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/488c0a87be8632f53a11133dfb8fb427a3d54092" target="_blank" rel="noopener">Biomedical Image Analysis in Python</a></li>
-                        <li><a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/c33fe93d1187883e260dc62a77878747a6ab5582" target="_blank" rel="noopener">Data Manipulation with pandas</a></li>
-                        <li><a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/7c52d19785005791f15001894c8db6d5264f75e4" target="_blank" rel="noopener">Image Processing in Python</a></li>
-                    </ul>
+                    <div class="cert-grid">
+                        <article>
+                            <h4><a href="https://www.credly.com/badges/cc4ae314-e1ea-41a0-b38b-431920e71b8a/linked_in_profile" target="_blank" rel="noopener">Google Cybersecurity</a> · Google</h4>
+                            <ul>
+                                <li>Mitigating vulnerabilities</li>
+                                <li>Responding to security incidents</li>
+                                <li>Automating security tasks with Python</li>
+                            </ul>
+                        </article>
+                        <article>
+                            <h4><a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/488c0a87be8632f53a11133dfb8fb427a3d54092" target="_blank" rel="noopener">Biomedical Image Analysis in Python</a> · Datacamp</h4>
+                            <ul>
+                                <li>Mask and filters</li>
+                                <li>Object measurements via time series</li>
+                                <li>Alzheimer's morphometry</li>
+                            </ul>
+                        </article>
+                        <article>
+                            <h4><a href="https://www.datacamp.com/completed/statement-of-accomplishment/track/cd140a44a2435f272006bc3896a0bb5a63c33ce5" target="_blank" rel="noopener">AI Agent Fundamentals</a> · Datacamp</h4>
+                            <ul>
+                                <li>LLM + tools orchestration</li>
+                                <li>API integration with data stores</li>
+                                <li>CoT/ReAct and MCP/A2A safety flows</li>
+                            </ul>
+                        </article>
+                        <article>
+                            <h4><a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/7c52d19785005791f15001894c8db6d5264f75e4" target="_blank" rel="noopener">Image Processing in Python</a> · Datacamp</h4>
+                            <ul>
+                                <li>Filters, contrast, morphology</li>
+                                <li>Restoration, segmentation, contours</li>
+                                <li>Feature detection and face analytics</li>
+                            </ul>
+                        </article>
+                    </div>
                 </article>
             </div>
         </section>
@@ -225,12 +278,14 @@
             <div class="section-content grid references">
                 <article class="card">
                     <h3>Rumman Ahmed Prodhan</h3>
-                    <p>Lecturer, Department of Computer Science and Engineering, Northern University Bangladesh</p>
+                    <p>Lecturer, Department of Computer Science and Engineering,</p> 
+                    <p>Northern University Bangladesh</p>
                     <p><a href="mailto:rumman.nub@gmail.com">rumman.nub@gmail.com</a><br /><a href="tel:+8801521429847">(+880) 1521-429847</a></p>
                 </article>
                 <article class="card">
                     <h3>Simon Bin Akter</h3>
-                    <p>Lecturer, Department of Computer Science and Engineering, Northern University Bangladesh</p>
+                    <p>Lecturer, Department of Computer Science and Engineering,</p>
+                    <p>Northern University Bangladesh</p>
                     <p><a href="mailto:simon.akter@nub.ac.bd">simon.akter@nub.ac.bd</a><br /><a href="tel:+8801622030245">(+880) 1622-030245</a></p>
                 </article>
             </div>
