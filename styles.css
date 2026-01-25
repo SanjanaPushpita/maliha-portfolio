@@ -422,6 +422,18 @@ main {
     gap: 1.5rem;
 }
 
+.timeline-virtual {
+    margin-top: 2.5rem;
+}
+
+.timeline-group-title {
+    margin: 0 0 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
 .timeline-item {
     padding: 1.75rem;
     border-radius: var(--card-radius);
