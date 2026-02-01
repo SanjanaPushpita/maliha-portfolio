@@ -38,8 +38,8 @@
     --pill-bg: rgba(206, 193, 168, 0.15);
     --pill-border: rgba(206, 193, 168, 0.35);
     --footer-bg: linear-gradient(135deg, rgba(46, 32, 23, 0.98), rgba(88, 71, 56, 0.9));
-    --shimmer-color-1: rgba(255, 255, 255, 0.07);
-    --shimmer-color-2: rgba(255, 255, 255, 0.15);
+    --shimmer-color-1: rgba(255, 255, 255, 0.15);
+    --shimmer-color-2: rgba(255, 255, 255, 0.32);
 }
 
 [data-accent="alt"] {
@@ -76,8 +76,8 @@
     --pill-bg: rgba(93, 32, 34, 0.65);
     --pill-border: rgba(255, 198, 157, 0.3);
     --footer-bg: linear-gradient(135deg, rgba(23, 7, 4, 0.98), rgba(77, 21, 25, 0.92));
-    --shimmer-color-1: rgba(255, 198, 157, 0.08);
-    --shimmer-color-2: rgba(255, 198, 157, 0.18);
+    --shimmer-color-1: rgba(255, 198, 157, 0.18);
+    --shimmer-color-2: rgba(255, 198, 157, 0.36);
 }
 
 * {
@@ -90,6 +90,14 @@ body {
     background: var(--body-bg);
     color: var(--text-primary);
     line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.page-zoom {
+    transform: scale(0.9);
+    transform-origin: top center;
+    width: calc(100% / 0.9);
+    margin: 0 auto;
 }
 
 a {
@@ -255,7 +263,7 @@ img {
     text-transform: uppercase;
     letter-spacing: 0.18em;
     color: var(--accent);
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.85rem;
 }
 
 .hero-headline {
