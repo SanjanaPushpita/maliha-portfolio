@@ -1,33 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Maliha Sanjana | Computational Research & AI Engineering</title>
-    <meta name="description" content="Portfolio of Maliha Sanjana, AI/ML Engineer specializing in Computer Vision, Medical Imaging, PyTorch, and Explainable AI." />
+    <meta name="description"
+        content="Portfolio of Maliha Sanjana, AI/ML Engineer specializing in Computer Vision, Medical Imaging, PyTorch, and Explainable AI." />
     <meta name="theme-color" content="#08080a" />
-    
+
     <!-- Open Graph -->
     <meta property="og:title" content="Maliha Sanjana | Computational Research & AI Engineering" />
     <meta property="og:description" content="Explainable ML systems for imaging, health, and product teams." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://sanjanapushpita.github.io/maliha-portfolio/" />
-    
+
     <link rel="icon" type="image/png" href="assets/butterfly.png" />
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet" />
+
     <!-- Main CSS -->
     <link rel="stylesheet" href="styles.css" />
-    
+
     <!-- CDN Dependencies: Three.js & GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
+
 <body>
 
     <!-- SIGNATURE INTRO OVERLAY -->
@@ -41,14 +46,14 @@
     <!-- Background Canvas Layer -->
     <canvas id="bg-canvas"></canvas>
 
-    <!-- Translucent Floating Navigation -->
+    <!-- Translucent Floating Liquid Glass Navigation -->
     <header class="header-wrapper" id="top">
-        <nav class="site-nav" aria-label="Main Navigation">
+        <nav class="site-nav" id="siteNav" aria-label="Main Navigation">
             <a class="logo" href="#top" aria-label="Maliha Sanjana Home">
                 <img src="assets/butterfly.png" alt="" class="logo-mark" />
                 <span>MALIHA <span>SANJANA</span></span>
             </a>
-            
+
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#research">Research</a></li>
@@ -63,7 +68,8 @@
             </ul>
 
             <div class="nav-controls">
-                <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle High-Contrast Theme" title="Toggle Theme">☀️</button>
+                <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle High-Contrast Theme"
+                    title="Toggle Theme">☀️</button>
                 <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle Menu" aria-expanded="false">
                     <span></span>
                     <span></span>
@@ -97,14 +103,16 @@
                 <div class="hero-role-tag">
                     <span>// COMPUTATIONAL RESEARCH & AI ENGINEERING</span>
                 </div>
-                
+
                 <h1 class="hero-name">MALIHA SANJANA</h1>
                 <p class="hero-headline">Explainable ML systems for imaging, health, and product teams.</p>
-                
+
                 <p class="hero-lead-text">
-                    AI/ML Engineer with a strong foundation in computer vision and Python, delivering end-to-end pipelines for medical imaging, applied ML, and full-stack builds that translate research into real-world impact.
+                    AI/ML Engineer with a strong foundation in computer vision and Python, delivering end-to-end
+                    pipelines for medical imaging, applied ML, and full-stack builds that translate research into
+                    real-world impact.
                 </p>
-                
+
                 <div class="btn-group">
                     <a class="btn-atelier btn-atelier-primary" href="#ai-projects">
                         <span>Explore AI Projects</span>
@@ -116,13 +124,15 @@
                 <div class="hero-social-quiet">
                     <a href="https://github.com/SanjanaPushpita" target="_blank" rel="noopener">GitHub ↗</a>
                     <a href="https://linkedin.com/in/malihasanjana" target="_blank" rel="noopener">LinkedIn ↗</a>
-                    <a href="https://scholar.google.com/citations?user=LWN8Z1cAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar ↗</a>
-                    <a href="https://www.researchgate.net/profile/Maliha-Sanjana" target="_blank" rel="noopener">ResearchGate ↗</a>
+                    <a href="https://scholar.google.com/citations?user=LWN8Z1cAAAAJ&hl=en" target="_blank"
+                        rel="noopener">Google Scholar ↗</a>
+                    <a href="https://www.researchgate.net/profile/Maliha-Sanjana" target="_blank"
+                        rel="noopener">ResearchGate ↗</a>
                 </div>
             </div>
 
-            <!-- Spatial Portrait Frame (Cleaned Up Completely) -->
-            <div class="hero-portrait-spatial">
+            <!-- Spatial Portrait Frame (Clean Liquid Glassbar Frame) -->
+            <div class="hero-portrait-spatial" id="portraitSpatial">
                 <div class="portrait-spatial-frame" id="portraitFrame">
                     <img src="assets/Maliha_Sanjana.jpg" alt="Portrait of Maliha Sanjana" class="portrait-img" />
                 </div>
@@ -135,9 +145,11 @@
             <div class="mobile-hero-identity">
                 <span class="micro-label">// AI/ML ENGINEER · COMPUTER VISION</span>
                 <h1 class="hero-name" style="font-size: 2.5rem; white-space: normal;">MALIHA SANJANA</h1>
-                <p class="hero-headline" style="font-size: 1.15rem;">Explainable ML systems for imaging, health, and product teams.</p>
+                <p class="hero-headline" style="font-size: 1.15rem;">Explainable ML systems for imaging, health, and
+                    product teams.</p>
                 <p class="hero-lead-text" style="font-size: 0.95rem;">
-                    AI/ML Engineer delivering end-to-end pipelines for medical imaging, applied ML, and full-stack builds.
+                    AI/ML Engineer delivering end-to-end pipelines for medical imaging, applied ML, and full-stack
+                    builds.
                 </p>
                 <div>
                     <a class="btn-atelier btn-atelier-primary" href="#ai-projects">
@@ -146,7 +158,7 @@
                     </a>
                 </div>
             </div>
-            
+
             <div class="portrait-spatial-frame" style="max-width: 100%;">
                 <img src="assets/Maliha_Sanjana.jpg" alt="Portrait of Maliha Sanjana" class="portrait-img" />
                 <div class="portrait-location-tag">📍 DHAKA, BANGLADESH</div>
@@ -163,11 +175,14 @@
             <div class="about-spatial-grid">
                 <div class="about-editorial-side">
                     <div class="editorial-pullquote">
-                        "Delivering end-to-end computer vision and explainable ML pipelines clinicians and product teams can trust."
+                        "Delivering end-to-end computer vision and explainable ML pipelines clinicians and product teams
+                        can trust."
                     </div>
-                    
+
                     <p class="about-factual-body">
-                        I combine computer vision, Python development, and cross-functional ML rigor to build SegUNet, MedSAM, and dual U-Net pipelines clinicians can explain, while also shipping ML-backed products spanning agritech, GenAI simulations, and security dashboards.
+                        I combine computer vision, Python development, and cross-functional ML rigor to build SegUNet,
+                        MedSAM, and dual U-Net pipelines clinicians can explain, while also shipping ML-backed products
+                        spanning agritech, GenAI simulations, and security dashboards.
                     </p>
 
                     <!-- Technical Specs Info Rail -->
@@ -178,7 +193,8 @@
                         </div>
                         <div class="rail-item">
                             <span class="rail-label">Email</span>
-                            <span class="rail-value"><a href="mailto:malihasanjanapushpita@gmail.com">malihasanjanapushpita@gmail.com</a></span>
+                            <span class="rail-value"><a
+                                    href="mailto:malihasanjanapushpita@gmail.com">malihasanjanapushpita@gmail.com</a></span>
                         </div>
                         <div class="rail-item">
                             <span class="rail-label">Phone</span>
@@ -203,7 +219,8 @@
             <div class="section-header">
                 <span class="micro-label">02 // FOCUS AREAS</span>
                 <h2 class="section-title">Research Interests</h2>
-                <p class="section-subtitle">Core investigative vectors combining interpretability, domain fusion, and robust ML deployment.</p>
+                <p class="section-subtitle">Core investigative vectors combining interpretability, domain fusion, and
+                    robust ML deployment.</p>
             </div>
 
             <div class="research-orbit-container" id="researchOrbit">
@@ -214,7 +231,8 @@
                         <span class="micro-label">[ SELECT ]</span>
                     </div>
                     <div class="node-expand-body">
-                        Designing interpretable SegUNet and MedSAM pipelines that illuminate dental and liver imaging decisions with Grad-CAM, bias checks, and transparent reporting.
+                        Designing interpretable SegUNet and MedSAM pipelines that illuminate dental and liver imaging
+                        decisions with Grad-CAM, bias checks, and transparent reporting.
                     </div>
                 </div>
 
@@ -225,7 +243,8 @@
                         <span class="micro-label">[ SELECT ]</span>
                     </div>
                     <div class="node-expand-body">
-                        Blending panoramic radiographs, CT volumes, agronomic leaf scans, and structured health data to surface clinician-ready, cross-domain insights.
+                        Blending panoramic radiographs, CT volumes, agronomic leaf scans, and structured health data to
+                        surface clinician-ready, cross-domain insights.
                     </div>
                 </div>
 
@@ -236,7 +255,8 @@
                         <span class="micro-label">[ SELECT ]</span>
                     </div>
                     <div class="node-expand-body">
-                        Shipping resilient pipelines for agritech disease detection, cybersecurity automation, and GenAI consulting simulations to prove readiness beyond the lab.
+                        Shipping resilient pipelines for agritech disease detection, cybersecurity automation, and GenAI
+                        consulting simulations to prove readiness beyond the lab.
                     </div>
                 </div>
             </div>
@@ -255,9 +275,12 @@
                     <div class="chrono-content">
                         <h3>Neurootix | AI/ML Engineer</h3>
                         <ul>
-                            <li>Designed, tested, and evaluated computer-vision models spanning diverse imaging datasets for production pilots.</li>
-                            <li>Ran applied experimentation to steer model selection, pipeline refinement, and research-grade reporting for ongoing AI engagements.</li>
-                            <li>Directed Python and image-processing workshops with hands-on coding modules that bridge theory and deployment readiness.</li>
+                            <li>Designed, tested, and evaluated computer-vision models spanning diverse imaging datasets
+                                for production pilots.</li>
+                            <li>Ran applied experimentation to steer model selection, pipeline refinement, and
+                                research-grade reporting for ongoing AI engagements.</li>
+                            <li>Directed Python and image-processing workshops with hands-on coding modules that bridge
+                                theory and deployment readiness.</li>
                         </ul>
                         <div class="chrono-links">
                             <a href="https://neurootix.com/" target="_blank" rel="noopener">Company Site ↗</a>
@@ -272,12 +295,15 @@
                     <div class="chrono-content">
                         <h3>British Airways | Data Science Job Simulation</h3>
                         <ul>
-                            <li>Analyzed customer review data to extract themes linked to satisfaction and buying behavior.</li>
+                            <li>Analyzed customer review data to extract themes linked to satisfaction and buying
+                                behavior.</li>
                             <li>Built a predictive model to identify the key drivers of purchase decisions.</li>
                         </ul>
                         <div class="chrono-links">
-                            <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/tMjbs76F526fF5v3G/NjynCWzGSaWXQCxSX_tMjbs76F526fF5v3G_44bcTsniLRZNQj7v4_1748449748371_completion_certificate.pdf" target="_blank" rel="noopener">Certificate ↗</a>
-                            <a href="https://github.com/SanjanaPushpita/Forage-British-Airways-Data-Science-Job-Sim" target="_blank" rel="noopener">GitHub ↗</a>
+                            <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/tMjbs76F526fF5v3G/NjynCWzGSaWXQCxSX_tMjbs76F526fF5v3G_44bcTsniLRZNQj7v4_1748449748371_completion_certificate.pdf"
+                                target="_blank" rel="noopener">Certificate ↗</a>
+                            <a href="https://github.com/SanjanaPushpita/Forage-British-Airways-Data-Science-Job-Sim"
+                                target="_blank" rel="noopener">GitHub ↗</a>
                         </div>
                     </div>
                 </article>
@@ -287,12 +313,15 @@
                     <div class="chrono-content">
                         <h3>BCG | GenAI Job Simulation</h3>
                         <ul>
-                            <li>Built a rule-based chatbot prototype to interpret financial data from 10-K and 10-Q reports.</li>
+                            <li>Built a rule-based chatbot prototype to interpret financial data from 10-K and 10-Q
+                                reports.</li>
                             <li>Processed structured financial datasets and generated user-friendly GenAI outputs.</li>
                         </ul>
                         <div class="chrono-links">
-                            <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/SKZxezskWgmFjRvj9/gabev3vXhuACr48eb_SKZxezskWgmFjRvj9_44bcTsniLRZNQj7v4_1746853331280_completion_certificate.pdf" target="_blank" rel="noopener">Certificate ↗</a>
-                            <a href="https://github.com/SanjanaPushpita/Forage-BCG-Data-Science-Job-Simulation" target="_blank" rel="noopener">GitHub ↗</a>
+                            <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/SKZxezskWgmFjRvj9/gabev3vXhuACr48eb_SKZxezskWgmFjRvj9_44bcTsniLRZNQj7v4_1746853331280_completion_certificate.pdf"
+                                target="_blank" rel="noopener">Certificate ↗</a>
+                            <a href="https://github.com/SanjanaPushpita/Forage-BCG-Data-Science-Job-Simulation"
+                                target="_blank" rel="noopener">GitHub ↗</a>
                         </div>
                     </div>
                 </article>
@@ -304,7 +333,8 @@
             <div class="section-header">
                 <span class="micro-label">04 // CASE STUDIES</span>
                 <h2 class="section-title">AI Projects</h2>
-                <p class="section-subtitle">Production-grade computer vision models, tumor segmentations, and clinical diagnostics pipelines.</p>
+                <p class="section-subtitle">Production-grade computer vision models, tumor segmentations, and clinical
+                    diagnostics pipelines.</p>
             </div>
 
             <div class="case-studies-container">
@@ -318,11 +348,14 @@
                         <h3 class="case-title">MedSAM FLARE22 Tumor Segmentation</h3>
                         <div class="case-metric-pill">Validation Dice ≈ 0.84 · Accuracy ≈ 0.98</div>
                         <ul class="case-bullets">
-                            <li>Fine-tuned MedSAM ViT-B on MICCAI FLARE22 CT scans using MONAI dataloaders and automated slice caching.</li>
-                            <li>Generated reusable evaluation artifacts to benchmark focal liver segmentation performance.</li>
+                            <li>Fine-tuned MedSAM ViT-B on MICCAI FLARE22 CT scans using MONAI dataloaders and automated
+                                slice caching.</li>
+                            <li>Generated reusable evaluation artifacts to benchmark focal liver segmentation
+                                performance.</li>
                         </ul>
                         <div>
-                            <a href="https://github.com/SanjanaPushpita/medsam-flare22-segmentation" target="_blank" rel="noopener" class="btn-atelier btn-atelier-secondary">View Repository ↗</a>
+                            <a href="https://github.com/SanjanaPushpita/medsam-flare22-segmentation" target="_blank"
+                                rel="noopener" class="btn-atelier btn-atelier-secondary">View Repository ↗</a>
                         </div>
                     </div>
                     <div class="case-vis-container">
@@ -341,11 +374,14 @@
                         <h3 class="case-title">PlantVillage Leaf Disease Detection</h3>
                         <div class="case-metric-pill">EfficientNet-B0 Test Accuracy 99.25%</div>
                         <ul class="case-bullets">
-                            <li>Hit 99.25% test accuracy with EfficientNet-B0 on 38 PlantVillage crop disease categories.</li>
-                            <li>Ensembled EfficientNet-B0, DenseNet121, ResNet18, and ResNet34 with reproducible PyTorch training diagnostics.</li>
+                            <li>Hit 99.25% test accuracy with EfficientNet-B0 on 38 PlantVillage crop disease
+                                categories.</li>
+                            <li>Ensembled EfficientNet-B0, DenseNet121, ResNet18, and ResNet34 with reproducible PyTorch
+                                training diagnostics.</li>
                         </ul>
                         <div>
-                            <a href="https://github.com/SanjanaPushpita/PlantVillage-Leaf-Disease-Lab" target="_blank" rel="noopener" class="btn-atelier btn-atelier-secondary">View Repository ↗</a>
+                            <a href="https://github.com/SanjanaPushpita/PlantVillage-Leaf-Disease-Lab" target="_blank"
+                                rel="noopener" class="btn-atelier btn-atelier-secondary">View Repository ↗</a>
                         </div>
                     </div>
                     <div class="case-vis-container">
@@ -364,11 +400,14 @@
                         <h3 class="case-title">Heart Disease Prediction</h3>
                         <div class="case-metric-pill">Accuracy 0.8804 · Precision 0.87 · Recall 0.92</div>
                         <ul class="case-bullets">
-                            <li>Built a full ML pipeline covering cleaning, imputation, encoding, feature engineering, and experiment tracking.</li>
-                            <li>Benchmarked classical models on clinical risk factors and deployed Gradient Boosting.</li>
+                            <li>Built a full ML pipeline covering cleaning, imputation, encoding, feature engineering,
+                                and experiment tracking.</li>
+                            <li>Benchmarked classical models on clinical risk factors and deployed Gradient Boosting.
+                            </li>
                         </ul>
                         <div>
-                            <a href="https://github.com/SanjanaPushpita/heart-disease-prediction-ml" target="_blank" rel="noopener" class="btn-atelier btn-atelier-secondary">View Repository ↗</a>
+                            <a href="https://github.com/SanjanaPushpita/heart-disease-prediction-ml" target="_blank"
+                                rel="noopener" class="btn-atelier btn-atelier-secondary">View Repository ↗</a>
                         </div>
                     </div>
                     <div class="case-vis-container">
@@ -387,12 +426,17 @@
                         <h3 class="case-title">Diabetic Retinopathy Dual U-Nets</h3>
                         <div class="case-metric-pill">Validation Accuracy 99.9% · DenseNet121 Dice 0.31</div>
                         <ul class="case-bullets">
-                            <li>Implemented dual U-Net architectures with EfficientNet-B4 and DenseNet121 encoders via segmentation_models_pytorch.</li>
-                            <li>Trained with BCEWithLogits + Dice loss, mixed precision, cosine LR schedules, and Adam for IDRiD lesion masks.</li>
-                            <li>Preprocessed 384×384 inputs with Albumentations, merged lesion masks, and tracked validation gains.</li>
+                            <li>Implemented dual U-Net architectures with EfficientNet-B4 and DenseNet121 encoders via
+                                segmentation_models_pytorch.</li>
+                            <li>Trained with BCEWithLogits + Dice loss, mixed precision, cosine LR schedules, and Adam
+                                for IDRiD lesion masks.</li>
+                            <li>Preprocessed 384×384 inputs with Albumentations, merged lesion masks, and tracked
+                                validation gains.</li>
                         </ul>
                         <div>
-                            <a href="https://github.com/SanjanaPushpita/Diabetic-Retinopathy-Segmentation" target="_blank" rel="noopener" class="btn-atelier btn-atelier-secondary">View Repository ↗</a>
+                            <a href="https://github.com/SanjanaPushpita/Diabetic-Retinopathy-Segmentation"
+                                target="_blank" rel="noopener" class="btn-atelier btn-atelier-secondary">View Repository
+                                ↗</a>
                         </div>
                     </div>
                     <div class="case-vis-container">
@@ -410,18 +454,24 @@
                         </div>
                         <h3 class="case-title">CivicFlow AI</h3>
                         <div class="case-metric-pill">GEMINI · FIREBASE · NODE.JS</div>
-                        <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem; font-style: italic;">
+                        <p
+                            style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem; font-style: italic;">
                             Bangla/English Voice-First Civic Safety Assistant for Bangladesh (Collaborative Project)
                         </p>
                         <ul class="case-bullets">
-                            <li>Processes Bangla, English, and mixed Banglish voice requests using Gemini audio analysis.</li>
+                            <li>Processes Bangla, English, and mixed Banglish voice requests using Gemini audio
+                                analysis.</li>
                             <li>Distinguishes civic reports, direct helpline requests, and high-risk emergencies.</li>
-                            <li>Supports GPS capture, emergency auto-submission, and emergency live-location tracking.</li>
-                            <li>Integrates Firebase authentication, Firestore citizen profiles, a Node.js backend, and a protected authority dashboard.</li>
-                            <li>Provides location-aware Bangladesh helpline matching and a risk-zone safety monitoring foundation.</li>
+                            <li>Supports GPS capture, emergency auto-submission, and emergency live-location tracking.
+                            </li>
+                            <li>Integrates Firebase authentication, Firestore citizen profiles, a Node.js backend, and a
+                                protected authority dashboard.</li>
+                            <li>Provides location-aware Bangladesh helpline matching and a risk-zone safety monitoring
+                                foundation.</li>
                         </ul>
                         <div>
-                            <a href="https://github.com/SanjanaPushpita/civicflow-ai" target="_blank" rel="noopener" class="btn-atelier btn-atelier-secondary">View Repository ↗</a>
+                            <a href="https://github.com/SanjanaPushpita/civicflow-ai" target="_blank" rel="noopener"
+                                class="btn-atelier btn-atelier-secondary">View Repository ↗</a>
                         </div>
                     </div>
                     <div class="case-vis-container">
@@ -444,11 +494,15 @@
                     <div>
                         <span class="micro-label">// E-COMMERCE</span>
                         <h3 class="artifact-title">BookNook</h3>
-                        <p style="margin-top: 0.5rem;">Responsive e-commerce UI with catalog search, filterable dashboards, and secure checkout flows, designed to keep book discovery, selection, and purchase frictionless.</p>
+                        <p style="margin-top: 0.5rem;">Responsive e-commerce UI with catalog search, filterable
+                            dashboards, and secure checkout flows, designed to keep book discovery, selection, and
+                            purchase frictionless.</p>
                     </div>
                     <div class="btn-group">
-                        <a href="https://github.com/SanjanaPushpita/BookNook" target="_blank" rel="noopener">GitHub ↗</a>
-                        <a href="https://sanjanapushpita.github.io/BookNook/" target="_blank" rel="noopener">Live Demo ↗</a>
+                        <a href="https://github.com/SanjanaPushpita/BookNook" target="_blank" rel="noopener">GitHub
+                            ↗</a>
+                        <a href="https://sanjanapushpita.github.io/BookNook/" target="_blank" rel="noopener">Live Demo
+                            ↗</a>
                     </div>
                 </article>
 
@@ -456,11 +510,15 @@
                     <div>
                         <span class="micro-label">// CYBERSECURITY UI</span>
                         <h3 class="artifact-title">NightWatch: Link Guard</h3>
-                        <p style="margin-top: 0.5rem;">Browser-based phishing detection dashboard that scores URLs locally using heuristics, dataset-tuned thresholds, and optional reputation checks inside a SOC-style interface.</p>
+                        <p style="margin-top: 0.5rem;">Browser-based phishing detection dashboard that scores URLs
+                            locally using heuristics, dataset-tuned thresholds, and optional reputation checks inside a
+                            SOC-style interface.</p>
                     </div>
                     <div class="btn-group">
-                        <a href="https://github.com/SanjanaPushpita/NightWatch-Link-Guard" target="_blank" rel="noopener">GitHub ↗</a>
-                        <a href="https://sanjanapushpita.github.io/NightWatch-Link-Guard/" target="_blank" rel="noopener">Live Demo ↗</a>
+                        <a href="https://github.com/SanjanaPushpita/NightWatch-Link-Guard" target="_blank"
+                            rel="noopener">GitHub ↗</a>
+                        <a href="https://sanjanapushpita.github.io/NightWatch-Link-Guard/" target="_blank"
+                            rel="noopener">Live Demo ↗</a>
                     </div>
                 </article>
 
@@ -468,11 +526,14 @@
                     <div>
                         <span class="micro-label">// PORTAL UI</span>
                         <h3 class="artifact-title">NUB Central Social Welfare Club</h3>
-                        <p style="margin-top: 0.5rem;">Organization hub featuring event galleries and member resources, designed as a responsive portal to strengthen community engagement and accessibility.</p>
+                        <p style="margin-top: 0.5rem;">Organization hub featuring event galleries and member resources,
+                            designed as a responsive portal to strengthen community engagement and accessibility.</p>
                     </div>
                     <div class="btn-group">
-                        <a href="https://github.com/SanjanaPushpita/nub-social-welfare-club-site" target="_blank" rel="noopener">GitHub ↗</a>
-                        <a href="https://sanjanapushpita.github.io/nub-social-welfare-club-site/" target="_blank" rel="noopener">Live Demo ↗</a>
+                        <a href="https://github.com/SanjanaPushpita/nub-social-welfare-club-site" target="_blank"
+                            rel="noopener">GitHub ↗</a>
+                        <a href="https://sanjanapushpita.github.io/nub-social-welfare-club-site/" target="_blank"
+                            rel="noopener">Live Demo ↗</a>
                     </div>
                 </article>
             </div>
@@ -487,10 +548,13 @@
 
             <article class="pub-editorial">
                 <span class="micro-label">27TH ICCIT 2024 · JUN 2025</span>
-                <h3 class="pub-title">Enhanced Pediatric Dental Segmentation Using a Custom SegUNet with VGG19 Backbone on Panoramic Radiographs</h3>
-                <p style="color: var(--text-secondary);">Co-authored research on interpretable dental imaging, delivering a custom SegUNet pipeline for pediatric panoramic radiographs.</p>
+                <h3 class="pub-title">Enhanced Pediatric Dental Segmentation Using a Custom SegUNet with VGG19 Backbone
+                    on Panoramic Radiographs</h3>
+                <p style="color: var(--text-secondary);">Co-authored research on interpretable dental imaging,
+                    delivering a custom SegUNet pipeline for pediatric panoramic radiographs.</p>
                 <div style="margin-top: 1rem;">
-                    <a href="https://doi.org/10.1109/ICCIT64611.2024.11021764" target="_blank" rel="noopener">Read via IEEE ↗</a>
+                    <a href="https://doi.org/10.1109/ICCIT64611.2024.11021764" target="_blank" rel="noopener">Read via
+                        IEEE ↗</a>
                 </div>
             </article>
         </section>
@@ -523,7 +587,8 @@
                     <div class="chrono-date">2018 – 2019</div>
                     <div class="chrono-content">
                         <h3>HSC Science</h3>
-                        <p style="color: var(--color-copper);">Jatir Janak Bangabandhu Sheikh Mujibur Rahman Government College · GPA 5.00/5.00</p>
+                        <p style="color: var(--color-copper);">Jatir Janak Bangabandhu Sheikh Mujibur Rahman Government
+                            College · GPA 5.00/5.00</p>
                     </div>
                 </article>
 
@@ -531,7 +596,8 @@
                     <div class="chrono-date">2016 – 2017</div>
                     <div class="chrono-content">
                         <h3>SSC Science</h3>
-                        <p style="color: var(--color-copper);">Dakhin Khan Adarsha Girls' High School · GPA 4.61/5.00</p>
+                        <p style="color: var(--color-copper);">Dakhin Khan Adarsha Girls' High School · GPA 4.61/5.00
+                        </p>
                     </div>
                 </article>
 
@@ -620,22 +686,26 @@
             <div class="cert-list-grid">
                 <div class="cert-item">
                     <h4>Google Cybersecurity Professional Certificate</h4>
-                    <a href="https://www.credly.com/badges/cc4ae314-e1ea-41a0-b38b-431920e71b8a/linked_in_profile" target="_blank" rel="noopener">Credly Badge ↗</a>
+                    <a href="https://www.credly.com/badges/cc4ae314-e1ea-41a0-b38b-431920e71b8a/linked_in_profile"
+                        target="_blank" rel="noopener">Credly Badge ↗</a>
                 </div>
 
                 <div class="cert-item">
                     <h4>Biomedical Image Analysis in Python</h4>
-                    <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/488c0a87be8632f53a11133dfb8fb427a3d54092" target="_blank" rel="noopener">DataCamp Certificate ↗</a>
+                    <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/488c0a87be8632f53a11133dfb8fb427a3d54092"
+                        target="_blank" rel="noopener">DataCamp Certificate ↗</a>
                 </div>
 
                 <div class="cert-item">
                     <h4>AI Agent Fundamentals</h4>
-                    <a href="https://www.datacamp.com/completed/statement-of-accomplishment/track/cd140a44a2435f272006bc3896a0bb5a63c33ce5" target="_blank" rel="noopener">DataCamp Certificate ↗</a>
+                    <a href="https://www.datacamp.com/completed/statement-of-accomplishment/track/cd140a44a2435f272006bc3896a0bb5a63c33ce5"
+                        target="_blank" rel="noopener">DataCamp Certificate ↗</a>
                 </div>
 
                 <div class="cert-item">
                     <h4>Image Processing in Python</h4>
-                    <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/7c52d19785005791f15001894c8db6d5264f75e4" target="_blank" rel="noopener">DataCamp Certificate ↗</a>
+                    <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/7c52d19785005791f15001894c8db6d5264f75e4"
+                        target="_blank" rel="noopener">DataCamp Certificate ↗</a>
                 </div>
             </div>
         </section>
@@ -651,27 +721,36 @@
                 <article class="blog-post-card">
                     <span class="micro-label">WORKFLOW · KAGGLE · COLAB</span>
                     <h3>Using Kaggle Datasets Directly in Google Colab</h3>
-                    <p style="color: var(--text-secondary); font-size: 0.92rem;">A practical playbook for pairing Kaggle API keys with Colab so large competitions stream in directly—no manual zips, just reproducible notebooks and mounted storage.</p>
+                    <p style="color: var(--text-secondary); font-size: 0.92rem;">A practical playbook for pairing Kaggle
+                        API keys with Colab so large competitions stream in directly—no manual zips, just reproducible
+                        notebooks and mounted storage.</p>
                     <div>
-                        <a href="https://neurootix-rebuild.hashnode.dev/using-kaggle-datasets-directly-in-google-colab-without-manual-downloads" target="_blank" rel="noopener">Read on Hashnode ↗</a>
+                        <a href="https://neurootix-rebuild.hashnode.dev/using-kaggle-datasets-directly-in-google-colab-without-manual-downloads"
+                            target="_blank" rel="noopener">Read on Hashnode ↗</a>
                     </div>
                 </article>
 
                 <article class="blog-post-card">
                     <span class="micro-label">ANALYSIS · GEOPOLITICS</span>
                     <h3>Code, Chips, and Control</h3>
-                    <p style="color: var(--text-secondary); font-size: 0.92rem;">Examining how silicon dependencies, export controls, and software ecosystems turned technology into the primary theater for geopolitical leverage.</p>
+                    <p style="color: var(--text-secondary); font-size: 0.92rem;">Examining how silicon dependencies,
+                        export controls, and software ecosystems turned technology into the primary theater for
+                        geopolitical leverage.</p>
                     <div>
-                        <a href="https://blog.neurootix.com/code-chips-and-control-how-technology-became-the-new-battlefield-of-geopolitics" target="_blank" rel="noopener">Read on Neurootix Blog ↗</a>
+                        <a href="https://blog.neurootix.com/code-chips-and-control-how-technology-became-the-new-battlefield-of-geopolitics"
+                            target="_blank" rel="noopener">Read on Neurootix Blog ↗</a>
                     </div>
                 </article>
 
                 <article class="blog-post-card">
                     <span class="micro-label">ESSAY · AI ETHICS</span>
                     <h3>Data, Power, and the Quiet Conflict</h3>
-                    <p style="color: var(--text-secondary); font-size: 0.92rem;">A meditation on the tension between algorithmic decision systems and human agency, and why the next frontier is contested in datasets, privacy laws, and control.</p>
+                    <p style="color: var(--text-secondary); font-size: 0.92rem;">A meditation on the tension between
+                        algorithmic decision systems and human agency, and why the next frontier is contested in
+                        datasets, privacy laws, and control.</p>
                     <div>
-                        <a href="https://blog.neurootix.com/data-power-and-the-quiet-conflict-between-artificial-intelligence-and-humanity" target="_blank" rel="noopener">Read on Neurootix Blog ↗</a>
+                        <a href="https://blog.neurootix.com/data-power-and-the-quiet-conflict-between-artificial-intelligence-and-humanity"
+                            target="_blank" rel="noopener">Read on Neurootix Blog ↗</a>
                     </div>
                 </article>
             </div>
@@ -690,7 +769,8 @@
                     <div class="chrono-content">
                         <h3>Vice President | NUB Computer Club</h3>
                         <ul>
-                            <li>Chief Editor of the <a href="https://nubcc.club/NUBCC-Magazine" target="_blank" rel="noopener">“Bullet vs Intellect”</a> e-magazine.</li>
+                            <li>Chief Editor of the <a href="https://nubcc.club/NUBCC-Magazine" target="_blank"
+                                    rel="noopener">“Bullet vs Intellect”</a> e-magazine.</li>
                             <li>Successfully organized and led CSE Day 2024 at Northern University Bangladesh.</li>
                             <li>Invigilated the NUBCC Programming Contest 2024 to ensure smooth contest operations.</li>
                         </ul>
@@ -709,7 +789,8 @@
             <div class="ref-pair">
                 <div>
                     <h3 style="font-size: 1.15rem; color: var(--text-primary);">Rumman Ahmed Prodhan</h3>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Lecturer, Department of Computer Science and Engineering,<br />Northern University Bangladesh</p>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Lecturer, Department of Computer Science
+                        and Engineering,<br />Northern University Bangladesh</p>
                     <p style="margin-top: 0.5rem; font-size: 0.88rem;">
                         <a href="mailto:rumman.nub@gmail.com">rumman.nub@gmail.com</a><br />
                         <a href="tel:+8801521429847">(+880) 1521-429847</a>
@@ -718,7 +799,8 @@
 
                 <div>
                     <h3 style="font-size: 1.15rem; color: var(--text-primary);">Simon Bin Akter</h3>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Lecturer, Department of Computer Science and Engineering,<br />Northern University Bangladesh</p>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Lecturer, Department of Computer Science
+                        and Engineering,<br />Northern University Bangladesh</p>
                     <p style="margin-top: 0.5rem; font-size: 0.88rem;">
                         <a href="mailto:simon.akter@nub.ac.bd">simon.akter@nub.ac.bd</a><br />
                         <a href="tel:+8801622030245">(+880) 1622-030245</a>
@@ -733,13 +815,17 @@
         <div class="footer-container">
             <div>
                 <h2 class="footer-h2">Let’s collaborate</h2>
-                <p style="color: var(--text-secondary); font-size: 1.05rem; margin-bottom: 1.5rem;">Email me at <a href="mailto:malihasanjanapushpita@gmail.com">malihasanjanapushpita@gmail.com</a>. Let’s connect on the platforms below.</p>
-                
+                <p style="color: var(--text-secondary); font-size: 1.05rem; margin-bottom: 1.5rem;">Email me at <a
+                        href="mailto:malihasanjanapushpita@gmail.com">malihasanjanapushpita@gmail.com</a>. Let’s connect
+                    on the platforms below.</p>
+
                 <div class="hero-social-quiet">
                     <a href="https://linkedin.com/in/malihasanjana" target="_blank" rel="noopener">LinkedIn ↗</a>
                     <a href="https://github.com/SanjanaPushpita" target="_blank" rel="noopener">GitHub ↗</a>
-                    <a href="https://scholar.google.com/citations?user=LWN8Z1cAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar ↗</a>
-                    <a href="https://www.researchgate.net/profile/Maliha-Sanjana" target="_blank" rel="noopener">ResearchGate ↗</a>
+                    <a href="https://scholar.google.com/citations?user=LWN8Z1cAAAAJ&hl=en" target="_blank"
+                        rel="noopener">Google Scholar ↗</a>
+                    <a href="https://www.researchgate.net/profile/Maliha-Sanjana" target="_blank"
+                        rel="noopener">ResearchGate ↗</a>
                 </div>
             </div>
 
@@ -757,4 +843,3 @@
     <!-- Main JavaScript -->
     <script src="script.js"></script>
 </body>
-</html>

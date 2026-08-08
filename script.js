@@ -1,6 +1,7 @@
 /* ==========================================================================
-   THE COMPUTATIONAL ATELIER — SCRIPT ENGINE (MICRO POLISH PASS)
-   Maliha Sanjana Portfolio
+   THE COMPUTATIONAL ATELIER — SCRIPT ENGINE
+   Maliha Sanjana Portfolio | AI/ML Engineer & Researcher
+   Clean Hero Portrait Presentation & Enhanced Liquid Glassbar Frame
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -16,29 +17,35 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. MOBILE DRAWER
     initMobileDrawer();
 
-    // 4. THREE.JS CIRCULAR BACKGROUND PARTICLES (Desktop Only)
-    if (!prefersReducedMotion && !isMobile && typeof THREE !== 'undefined') {
-        initThreeBackground();
+    // 4. LIQUID GLASS NAVBAR INTERACTION
+    initLiquidGlassNav();
+
+    // 5. AMBIENT GLASS-GRADIENT BACKDROP
+    if (!prefersReducedMotion) {
+        initAmbientGlassBackground();
     }
 
-    // 5. SPATIAL CAPABILITY CONSTELLATION CANVAS
+    // 6. SPATIAL CAPABILITY CONSTELLATION CANVAS
     initConstellationCanvas();
 
-    // 6. RESEARCH ORBIT INTERACTION
+    // 7. RESEARCH ORBIT INTERACTION
     initResearchOrbit();
 
-    // 7. SIGNATURE AI CASE STUDY VISUALIZERS
-    initCaseStudyVisualizers(prefersReducedMotion);
+    // 8. SIGNATURE AI CASE STUDY VISUALIZERS
+    initCaseStudyVisualizers(prefersReducedMotion, isMobile);
 
-    // 8. GSAP SCROLL REVEALS
+    // 9. GSAP SCROLL REVEALS
     if (!prefersReducedMotion && typeof gsap !== 'undefined') {
         initGSAPScroll();
     }
 
-    // 9. BACK TO TOP & UTILITIES
+    // 10. BACK TO TOP & UTILITIES
     initBackToTop();
     document.getElementById('year').textContent = new Date().getFullYear();
     initSmoothHeaderScroll();
+    if (!isMobile && !prefersReducedMotion) {
+        init3DHoverTilt();
+    }
 });
 
 /* ==========================================================================
@@ -48,7 +55,7 @@ function initSplashSequence(reducedMotion) {
     const splash = document.getElementById('splashOverlay');
     if (!splash) return;
 
-    const INTRO_KEY = 'atelier_intro_played_v4';
+    const INTRO_KEY = 'atelier_intro_played_v7';
     const alreadyPlayed = sessionStorage.getItem(INTRO_KEY);
 
     if (reducedMotion || alreadyPlayed) {
@@ -120,112 +127,115 @@ function initMobileDrawer() {
 }
 
 /* ==========================================================================
-   4. THREE.JS CIRCULAR BACKGROUND PARTICLES
-   - Dark mode: Soft atmospheric pink glow (#eb8ca5)
-   - Light mode: Subtle warm brownish tone (#875032)
+   4. LIQUID GLASS NAVBAR INTERACTION
    ========================================================================== */
-function createCircleTexture(isLight) {
-    const canvas = document.createElement('canvas');
-    canvas.width = 64;
-    canvas.height = 64;
-    const ctx = canvas.getContext('2d');
+function initLiquidGlassNav() {
+    const nav = document.getElementById('siteNav');
+    if (!nav) return;
 
-    const grad = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
-    if (isLight) {
-        // Subtle warm brownish tone for light mode
-        grad.addColorStop(0, 'rgba(135, 80, 50, 0.9)');
-        grad.addColorStop(0.5, 'rgba(135, 80, 50, 0.35)');
-        grad.addColorStop(1, 'rgba(135, 80, 50, 0)');
-    } else {
-        // Soft atmospheric pink glow for dark mode
-        grad.addColorStop(0, 'rgba(235, 140, 165, 0.95)');
-        grad.addColorStop(0.5, 'rgba(235, 140, 165, 0.45)');
-        grad.addColorStop(1, 'rgba(235, 140, 165, 0)');
-    }
+    nav.addEventListener('pointermove', (e) => {
+        const rect = nav.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
 
-    ctx.fillStyle = grad;
-    ctx.beginPath();
-    ctx.arc(32, 32, 32, 0, Math.PI * 2);
-    ctx.fill();
-
-    return new THREE.CanvasTexture(canvas);
+        nav.style.setProperty('--mouse-x', `${x}px`);
+        nav.style.setProperty('--mouse-y', `${y}px`);
+    }, { passive: true });
 }
 
-function initThreeBackground() {
+/* ==========================================================================
+   5. AMBIENT GLASS-GRADIENT BACKDROP (SOFT AMBIENT FORMS)
+   ========================================================================== */
+function initAmbientGlassBackground() {
     const canvas = document.getElementById('bg-canvas');
     if (!canvas) return;
 
-    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 50;
-
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
-    renderer.setSize(window.innerWidth, window.innerHeight);
-
-    // Soft Floating Atmospheric Circle Particles
-    const count = 70;
-    const geometry = new THREE.BufferGeometry();
-    const positions = new Float32Array(count * 3);
-
-    for (let i = 0; i < count; i++) {
-        positions[i * 3] = (Math.random() - 0.5) * 90;
-        positions[i * 3 + 1] = (Math.random() - 0.5) * 90;
-        positions[i * 3 + 2] = (Math.random() - 0.5) * 40;
-    }
-
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-    const circleTexture = createCircleTexture(isLight);
-
-    const pMaterial = new THREE.PointsMaterial({
-        color: isLight ? 0x875032 : 0xeb8ca5,
-        size: 2.5,
-        map: circleTexture,
-        transparent: true,
-        opacity: isLight ? 0.45 : 0.65,
-        depthWrite: false,
-        blending: THREE.NormalBlending
-    });
-
-    const points = new THREE.Points(geometry, pMaterial);
-    scene.add(points);
-
+    const ctx = canvas.getContext('2d');
     let isVisible = true;
+
     const observer = new IntersectionObserver(([entry]) => {
         isVisible = entry.isIntersecting;
     });
     observer.observe(canvas);
 
-    let mouseX = 0, mouseY = 0;
-    window.addEventListener('pointermove', (e) => {
-        mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-        mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-    }, { passive: true });
+    const orbs = [
+        { x: 0.20, y: 0.25, rx: 280, ry: 240, vx: 0.0003, vy: 0.0002, phase: 0 },
+        { x: 0.75, y: 0.35, rx: 340, ry: 290, vx: -0.0002, vy: 0.0003, phase: 1.5 },
+        { x: 0.45, y: 0.70, rx: 380, ry: 310, vx: 0.00025, vy: -0.0002, phase: 3.0 },
+        { x: 0.15, y: 0.80, rx: 260, ry: 220, vx: -0.0003, vy: -0.00025, phase: 4.2 },
+        { x: 0.85, y: 0.85, rx: 300, ry: 260, vx: 0.0002, vy: 0.00015, phase: 5.5 }
+    ];
 
-    function animate() {
-        requestAnimationFrame(animate);
+    let time = 0;
+
+    function render() {
+        requestAnimationFrame(render);
         if (!isVisible) return;
 
-        points.rotation.y += 0.0006;
-        points.rotation.x = mouseY * 0.04;
-        points.rotation.y += mouseX * 0.001;
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-        renderer.render(scene, camera);
+        const w = canvas.width;
+        const h = canvas.height;
+        ctx.clearRect(0, 0, w, h);
+
+        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+        time += 0.01;
+
+        orbs.forEach((orb, i) => {
+            const ox = (orb.x + Math.sin(time * 0.4 + orb.phase) * 0.05) * w;
+            const oy = (orb.y + Math.cos(time * 0.3 + orb.phase) * 0.05) * h;
+            const radius = Math.max(orb.rx, orb.ry);
+
+            const grad = ctx.createRadialGradient(ox, oy, 0, ox, oy, radius);
+
+            if (isLight) {
+                if (i % 3 === 0) {
+                    grad.addColorStop(0, 'rgba(251, 194, 207, 0.38)');
+                    grad.addColorStop(0.5, 'rgba(253, 226, 232, 0.18)');
+                    grad.addColorStop(1, 'rgba(255, 240, 243, 0)');
+                } else if (i % 3 === 1) {
+                    grad.addColorStop(0, 'rgba(248, 159, 179, 0.32)');
+                    grad.addColorStop(0.55, 'rgba(203, 184, 232, 0.15)');
+                    grad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+                } else {
+                    grad.addColorStop(0, 'rgba(216, 192, 152, 0.28)');
+                    grad.addColorStop(0.5, 'rgba(253, 226, 232, 0.15)');
+                    grad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+                }
+            } else {
+                if (i % 3 === 0) {
+                    grad.addColorStop(0, 'rgba(34, 34, 44, 0.65)');
+                    grad.addColorStop(0.5, 'rgba(26, 26, 34, 0.35)');
+                    grad.addColorStop(1, 'rgba(8, 8, 10, 0)');
+                } else if (i % 3 === 1) {
+                    grad.addColorStop(0, 'rgba(50, 50, 64, 0.55)');
+                    grad.addColorStop(0.5, 'rgba(122, 27, 50, 0.12)');
+                    grad.addColorStop(1, 'rgba(8, 8, 10, 0)');
+                } else {
+                    grad.addColorStop(0, 'rgba(70, 70, 88, 0.45)');
+                    grad.addColorStop(0.55, 'rgba(20, 20, 26, 0.25)');
+                    grad.addColorStop(1, 'rgba(8, 8, 10, 0)');
+                }
+            }
+
+            ctx.fillStyle = grad;
+            ctx.beginPath();
+            ctx.arc(ox, oy, radius, 0, Math.PI * 2);
+            ctx.fill();
+        });
     }
-    animate();
+
+    render();
 
     window.addEventListener('resize', () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
     }, { passive: true });
 }
 
 /* ==========================================================================
-   5. SPATIAL CAPABILITY CONSTELLATION CANVAS
+   6. SPATIAL CAPABILITY CONSTELLATION CANVAS
    ========================================================================== */
 function initConstellationCanvas() {
     const canvas = document.getElementById('constellation-canvas');
@@ -278,7 +288,7 @@ function initConstellationCanvas() {
             ctx.arc(nx, ny, n.r, 0, Math.PI * 2);
             ctx.fill();
 
-            ctx.fillStyle = isLight ? '#0d0d11' : '#f2efe9';
+            ctx.fillStyle = isLight ? '#121216' : '#f7f5f0';
             ctx.font = '11px monospace';
             ctx.fillText(n.label, nx + 10, ny + 4);
         });
@@ -289,7 +299,7 @@ function initConstellationCanvas() {
 }
 
 /* ==========================================================================
-   6. RESEARCH ORBIT INTERACTION
+   7. RESEARCH ORBIT INTERACTION
    ========================================================================== */
 function initResearchOrbit() {
     const nodes = document.querySelectorAll('.research-orbit-node');
@@ -302,9 +312,9 @@ function initResearchOrbit() {
 }
 
 /* ==========================================================================
-   7. CASE STUDY VISUALIZERS
+   8. SIGNATURE AI CASE STUDY VISUALIZERS
    ========================================================================== */
-function initCaseStudyVisualizers(reducedMotion) {
+function initCaseStudyVisualizers(reducedMotion, isMobile) {
     if (reducedMotion) return;
 
     setupVisualizer('vis-medsam', renderMedSAM);
@@ -348,44 +358,52 @@ function setupVisualizer(canvasId, renderFn) {
     loop(0);
 }
 
-// Render Functions
+// 8.1 MedSAM FLARE22 Tumor Segmentation
 function renderMedSAM(ctx, w, h, time) {
-    ctx.fillStyle = document.documentElement.getAttribute('data-theme') === 'light' ? '#ebf2f7' : '#08080a';
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    ctx.fillStyle = isLight ? '#fdf8f9' : '#08080a';
     ctx.fillRect(0, 0, w, h);
 
     const cx = w / 2, cy = h / 2;
-    const r = Math.min(cx, cy) * 0.6;
+    const r = Math.min(cx, cy) * 0.55;
 
-    ctx.strokeStyle = 'rgba(0, 180, 216, 0.25)';
+    ctx.strokeStyle = isLight ? 'rgba(0, 180, 216, 0.15)' : 'rgba(0, 180, 216, 0.2)';
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.arc(cx, cy, r, 0, Math.PI * 2);
     ctx.stroke();
 
-    ctx.fillStyle = 'rgba(81, 24, 39, 0.4)';
-    ctx.strokeStyle = '#00b4d8';
-    ctx.lineWidth = 1.5;
     ctx.beginPath();
-    ctx.ellipse(cx + 8, cy - 4, r * 0.35, r * 0.25, Math.PI / 4, 0, Math.PI * 2);
+    ctx.arc(cx, cy, r * 0.7, 0, Math.PI * 2);
+    ctx.stroke();
+
+    const pulse = Math.sin(time * 0.003) * 0.05 + 1;
+    ctx.fillStyle = 'rgba(122, 27, 50, 0.45)';
+    ctx.strokeStyle = '#00b4d8';
+    ctx.lineWidth = 1.8;
+    ctx.beginPath();
+    ctx.ellipse(cx + 6, cy - 4, r * 0.38 * pulse, r * 0.28 * pulse, Math.PI / 4, 0, Math.PI * 2);
     ctx.fill();
     ctx.stroke();
 
     const scanY = (time * 0.08) % h;
-    ctx.strokeStyle = 'rgba(0, 180, 216, 0.8)';
+    ctx.strokeStyle = 'rgba(0, 180, 216, 0.85)';
     ctx.beginPath();
     ctx.moveTo(0, scanY);
     ctx.lineTo(w, scanY);
     ctx.stroke();
 }
 
+// 8.2 PlantVillage Leaf Disease Detection
 function renderPlant(ctx, w, h, time) {
-    ctx.fillStyle = document.documentElement.getAttribute('data-theme') === 'light' ? '#f5f0eb' : '#08080a';
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    ctx.fillStyle = isLight ? '#fdf8f9' : '#08080a';
     ctx.fillRect(0, 0, w, h);
 
     const cols = 5, rows = 3;
     const cw = w / cols, ch = h / rows;
 
-    ctx.strokeStyle = 'rgba(142, 146, 156, 0.15)';
+    ctx.strokeStyle = isLight ? 'rgba(60, 64, 75, 0.12)' : 'rgba(142, 146, 156, 0.15)';
     for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
             ctx.strokeRect(i * cw, j * ch, cw, ch);
@@ -399,43 +417,62 @@ function renderPlant(ctx, w, h, time) {
 
     ctx.fillStyle = '#b8754e';
     ctx.font = '10px monospace';
-    ctx.fillText('CONFIDENCE: 99.25%', cw * 1.6, ch * 0.8);
+    ctx.fillText('EFFICIENTNET-B0 // 99.25%', cw * 1.55, ch * 0.85);
 }
 
+// 8.3 Heart Disease Prediction (Particle-Heart + ECG Signal)
 function renderHeart(ctx, w, h, time) {
-    ctx.fillStyle = document.documentElement.getAttribute('data-theme') === 'light' ? '#f2eff5' : '#08080a';
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    ctx.fillStyle = isLight ? '#fdf8f9' : '#08080a';
     ctx.fillRect(0, 0, w, h);
 
-    const cy = h / 2;
-    const speed = time * 0.15;
+    const cx = w * 0.3;
+    const cy = h * 0.5;
 
-    ctx.strokeStyle = '#a896d8';
+    const speed = time * 0.15;
+    ctx.strokeStyle = isLight ? '#a82442' : '#cbb8e8';
     ctx.lineWidth = 1.8;
     ctx.beginPath();
 
     for (let x = 0; x < w; x++) {
-        const rx = (x + speed) % 200;
-        let y = cy;
+        const rx = (x + speed) % 220;
+        let y = h * 0.5;
 
-        if (rx > 80 && rx < 90) y = cy - 20;
-        else if (rx >= 90 && rx < 100) y = cy + 8;
-        else if (rx >= 100 && rx < 115) y = cy - 50;
-        else if (rx >= 115 && rx < 130) y = cy + 15;
+        if (rx > 90 && rx < 100) y = h * 0.5 - 22;
+        else if (rx >= 100 && rx < 110) y = h * 0.5 + 10;
+        else if (rx >= 110 && rx < 125) y = h * 0.5 - 55;
+        else if (rx >= 125 && rx < 140) y = h * 0.5 + 18;
 
         if (x === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
     }
     ctx.stroke();
+
+    const pulse = Math.sin(time * 0.004) * 0.08 + 1;
+    const particles = 28;
+    ctx.fillStyle = isLight ? '#f47b96' : '#f47b96';
+
+    for (let i = 0; i < particles; i++) {
+        const t = (i / particles) * Math.PI * 2;
+        const hx = 14 * Math.pow(Math.sin(t), 3) * pulse;
+        const hy = -(12 * Math.cos(t) - 4 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t)) * pulse;
+
+        ctx.beginPath();
+        ctx.arc(cx + hx * 3.5, cy + hy * 3.5, 2.2, 0, Math.PI * 2);
+        ctx.fill();
+    }
 }
 
+// 8.4 Diabetic Retinopathy Dual U-Nets
 function renderDR(ctx, w, h, time) {
-    ctx.fillStyle = document.documentElement.getAttribute('data-theme') === 'light' ? '#f7eeee' : '#08080a';
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    ctx.fillStyle = isLight ? '#fdf8f9' : '#08080a';
     ctx.fillRect(0, 0, w, h);
 
     const cx = w / 2, cy = h / 2;
     const angle = time * 0.0005;
 
-    ctx.strokeStyle = 'rgba(81, 24, 39, 0.6)';
+    ctx.strokeStyle = isLight ? 'rgba(168, 36, 66, 0.4)' : 'rgba(122, 27, 50, 0.6)';
     ctx.lineWidth = 1.5;
     ctx.beginPath();
     ctx.arc(cx, cy, 65, 0, Math.PI * 2);
@@ -452,11 +489,11 @@ function renderDR(ctx, w, h, time) {
     ctx.stroke();
 }
 
+// 8.5 CivicFlow AI System Flow Visualizer
 function renderCivicFlow(ctx, w, h, time) {
-    ctx.fillStyle = document.documentElement.getAttribute('data-theme') === 'light' ? '#f5f2ec' : '#08080a';
-    ctx.fillRect(0, 0, w, h);
-
     const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    ctx.fillStyle = isLight ? '#fdf8f9' : '#08080a';
+    ctx.fillRect(0, 0, w, h);
 
     const nVoice = { x: w * 0.2, y: h * 0.5, label: 'VOICE INPUT' };
     const nIntent = { x: w * 0.5, y: h * 0.5, label: 'GEMINI AI INTENT' };
@@ -464,7 +501,7 @@ function renderCivicFlow(ctx, w, h, time) {
     const nHelp = { x: w * 0.8, y: h * 0.5, label: 'HELPLINE MATCH' };
     const nEmerg = { x: w * 0.8, y: h * 0.75, label: 'EMERGENCY GPS' };
 
-    ctx.strokeStyle = 'rgba(184, 117, 78, 0.25)';
+    ctx.strokeStyle = 'rgba(184, 117, 78, 0.3)';
     ctx.lineWidth = 1.5;
 
     const routes = [
@@ -494,13 +531,13 @@ function renderCivicFlow(ctx, w, h, time) {
 
     const allNodes = [nVoice, nIntent, nReport, nHelp, nEmerg];
     allNodes.forEach((node) => {
-        ctx.fillStyle = isLight ? '#ffffff' : '#121216';
+        ctx.fillStyle = isLight ? '#ffffff' : '#141418';
         ctx.strokeStyle = '#b8754e';
         ctx.lineWidth = 1;
         ctx.fillRect(node.x - 45, node.y - 14, 90, 28);
         ctx.strokeRect(node.x - 45, node.y - 14, 90, 28);
 
-        ctx.fillStyle = isLight ? '#0d0d11' : '#f2efe9';
+        ctx.fillStyle = isLight ? '#121216' : '#f7f5f0';
         ctx.font = '9px monospace';
         ctx.textAlign = 'center';
         ctx.fillText(node.label, node.x, node.y + 3);
@@ -510,7 +547,7 @@ function renderCivicFlow(ctx, w, h, time) {
 }
 
 /* ==========================================================================
-   8. GSAP SCROLL REVEALS
+   9. GSAP SCROLL REVEALS
    ========================================================================== */
 function initGSAPScroll() {
     gsap.registerPlugin(ScrollTrigger);
@@ -531,7 +568,7 @@ function initGSAPScroll() {
 }
 
 /* ==========================================================================
-   9. BACK TO TOP & UTILITIES
+   10. BACK TO TOP & UTILITIES & 3D HOVER TILT
    ========================================================================== */
 function initBackToTop() {
     const backBtn = document.getElementById('backToTop');
@@ -555,4 +592,26 @@ function initSmoothHeaderScroll() {
             header.classList.remove('scrolled');
         }
     }, { passive: true });
+}
+
+function init3DHoverTilt() {
+    const tiltContainers = document.querySelectorAll('.portrait-spatial-frame, .case-vis-container, .artifact-card');
+    tiltContainers.forEach((card) => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const cx = rect.width / 2;
+            const cy = rect.height / 2;
+
+            const rotX = ((y - cy) / cy) * -2.5;
+            const rotY = ((x - cx) / cx) * 2.5;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+        });
+    });
 }
