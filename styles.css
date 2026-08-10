@@ -296,23 +296,8 @@ button {
     opacity: 1;
 }
 
-/* Feathered Ambient Mouse-Responsive Light Bloom Backdrop */
 .nav-glow-backdrop {
-    position: absolute;
-    inset: -18px;
-    border-radius: 9999px;
-    pointer-events: none;
-    z-index: -1;
-    background: radial-gradient(ellipse 300px 60px at var(--mouse-x, 50%) 50%, rgba(247, 168, 196, 0.38) 0%, rgba(155, 93, 229, 0.28) 35%, rgba(251, 86, 7, 0.18) 60%, rgba(0, 245, 212, 0.2) 85%, transparent 100%),
-                linear-gradient(90deg, rgba(247, 168, 196, 0.15) 0%, rgba(155, 93, 229, 0.18) 45%, rgba(0, 245, 212, 0.22) 100%);
-    filter: blur(24px);
-    opacity: 0.65;
-    transition: opacity 0.4s ease, filter 0.4s ease;
-}
-
-.site-nav:hover .nav-glow-backdrop {
-    opacity: 0.95;
-    filter: blur(28px);
+    display: none !important;
 }
 
 [data-theme="light"] .site-nav {
@@ -323,7 +308,7 @@ button {
     box-shadow: 
         inset 0 1.5px 2.5px #ffffff,
         inset 0 -2px 6px rgba(244, 123, 150, 0.1),
-        0 15px 35px rgba(244, 123, 150, 0.12);
+        0 8px 25px rgba(0, 0, 0, 0.06);
 }
 
 [data-theme="light"] .site-nav::before {
@@ -1439,7 +1424,7 @@ main {
    LIQUID GLASS ART GALLERY BUTTONS (HERO & LARGE GATEWAY)
    ========================================================================== */
 
-/* Small Hero Glass Button (Ultra Liquid Glass) */
+/* Small Hero Glass Button (Matching Navbar Liquid Glass Style) */
 .btn-hero-art-glass {
     display: inline-flex;
     align-items: center;
@@ -1452,11 +1437,14 @@ main {
     color: #ffffff;
     text-decoration: none;
     border-radius: 9999px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, rgba(247, 168, 196, 0.2) 30%, rgba(155, 93, 229, 0.22) 65%, rgba(0, 245, 212, 0.18) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.45);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), 0 4px 20px rgba(247, 168, 196, 0.25), inset 0 2px 2px rgba(255, 255, 255, 0.8), inset 0 -2px 4px rgba(155, 93, 229, 0.25);
-    backdrop-filter: blur(20px) saturate(200%);
-    -webkit-backdrop-filter: blur(20px) saturate(200%);
+    background: rgba(10, 8, 15, 0.42);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1.2px solid rgba(255, 255, 255, 0.28);
+    box-shadow: 
+        inset 0 1.5px 2px rgba(255, 255, 255, 0.8),
+        inset 0 -2px 6px rgba(155, 93, 229, 0.15),
+        0 12px 30px rgba(0, 0, 0, 0.4);
     position: relative;
     overflow: hidden;
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
@@ -1467,36 +1455,39 @@ main {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
-    height: 50%;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.05) 100%);
-    border-top-left-radius: 9999px;
-    border-top-right-radius: 9999px;
+    left: 2%;
+    right: 2%;
+    height: 48%;
+    border-radius: 9999px 9999px 0 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.06) 50%, transparent 100%);
     pointer-events: none;
+    z-index: 1;
 }
 
 .btn-hero-art-glass::after {
     content: '';
     position: absolute;
-    inset: -1px;
+    inset: 0;
     border-radius: 9999px;
-    padding: 1px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(247, 168, 196, 0.6), rgba(155, 93, 229, 0.5), rgba(0, 245, 212, 0.6));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
+    background: linear-gradient(135deg, rgba(247, 168, 196, 0.2) 0%, rgba(155, 93, 229, 0.15) 50%, rgba(0, 245, 212, 0.12) 100%);
     pointer-events: none;
-    opacity: 0.85;
+    opacity: 0.6;
     transition: opacity 0.35s ease;
 }
 
 .btn-hero-art-glass:hover {
     color: #ffffff;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.32) 0%, rgba(247, 168, 196, 0.32) 30%, rgba(155, 93, 229, 0.32) 65%, rgba(0, 245, 212, 0.28) 100%);
-    border-color: rgba(255, 255, 255, 0.7);
-    box-shadow: 0 16px 40px rgba(247, 168, 196, 0.35), 0 0 25px rgba(155, 93, 229, 0.3), inset 0 2.5px 3px rgba(255, 255, 255, 0.95);
-    transform: translateY(-3px) scale(1.03);
+    background: rgba(14, 11, 22, 0.55);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 
+        inset 0 2px 3px rgba(255, 255, 255, 0.9),
+        inset 0 -2px 8px rgba(155, 93, 229, 0.25),
+        0 15px 35px rgba(0, 0, 0, 0.5);
+    transform: translateY(-2px);
+}
+
+.btn-hero-art-glass:hover::after {
+    opacity: 0.9;
 }
 
 /* Large Gateway Section between References and Contact */
@@ -1534,11 +1525,14 @@ main {
     justify-content: center;
     text-decoration: none;
     border-radius: 24px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(247, 168, 196, 0.18) 25%, rgba(155, 93, 229, 0.2) 60%, rgba(0, 245, 212, 0.14) 100%);
-    border: 1.5px solid rgba(255, 255, 255, 0.45);
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 10px 35px rgba(247, 168, 196, 0.22), inset 0 2px 3px rgba(255, 255, 255, 0.75), inset 0 -2px 6px rgba(155, 93, 229, 0.25);
-    backdrop-filter: blur(28px) saturate(200%);
-    -webkit-backdrop-filter: blur(28px) saturate(200%);
+    background: rgba(10, 8, 15, 0.42);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1.2px solid rgba(255, 255, 255, 0.28);
+    box-shadow: 
+        inset 0 1.5px 2px rgba(255, 255, 255, 0.8),
+        inset 0 -2px 6px rgba(155, 93, 229, 0.15),
+        0 16px 40px rgba(0, 0, 0, 0.45);
     position: relative;
     overflow: hidden;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
@@ -1548,23 +1542,22 @@ main {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
-    height: 50%;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.02) 100%);
-    border-top-left-radius: 22px;
-    border-top-right-radius: 22px;
+    left: 2%;
+    right: 2%;
+    height: 48%;
+    border-radius: 22px 22px 0 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.06) 50%, transparent 100%);
     pointer-events: none;
+    z-index: 1;
 }
 
 .gateway-btn-glow {
     position: absolute;
-    inset: -50%;
-    background: radial-gradient(circle, rgba(247, 168, 196, 0.35) 0%, rgba(155, 93, 229, 0.22) 40%, transparent 70%);
-    transform: translate(-30%, -30%);
+    inset: 0;
+    background: linear-gradient(135deg, rgba(247, 168, 196, 0.2) 0%, rgba(155, 93, 229, 0.15) 50%, rgba(0, 245, 212, 0.12) 100%);
     pointer-events: none;
-    transition: transform 0.6s ease, opacity 0.6s ease;
-    opacity: 0.75;
+    opacity: 0.6;
+    transition: opacity 0.4s ease;
 }
 
 .gateway-btn-text {
@@ -1575,20 +1568,22 @@ main {
     font-weight: 800;
     letter-spacing: 0.22em;
     color: #ffffff;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7), 0 0 15px rgba(247, 168, 196, 0.5);
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
     transition: letter-spacing 0.35s ease;
 }
 
 .btn-art-gateway-large:hover {
-    transform: translateY(-5px) scale(1.02);
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(247, 168, 196, 0.3) 25%, rgba(155, 93, 229, 0.32) 60%, rgba(0, 245, 212, 0.22) 100%);
-    border-color: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 30px 75px rgba(0, 0, 0, 0.6), 0 15px 45px rgba(247, 168, 196, 0.35), 0 0 30px rgba(155, 93, 229, 0.35), inset 0 2.5px 4px rgba(255, 255, 255, 0.95);
+    transform: translateY(-3px);
+    background: rgba(14, 11, 22, 0.55);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 
+        inset 0 2px 3px rgba(255, 255, 255, 0.9),
+        inset 0 -2px 8px rgba(155, 93, 229, 0.25),
+        0 20px 48px rgba(0, 0, 0, 0.55);
 }
 
 .btn-art-gateway-large:hover .gateway-btn-glow {
-    transform: translate(0, 0);
-    opacity: 1;
+    opacity: 0.9;
 }
 
 .btn-art-gateway-large:hover .gateway-btn-text {
