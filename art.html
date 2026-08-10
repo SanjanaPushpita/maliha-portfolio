@@ -11,7 +11,7 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="Maliha's Chromatic Atelier | Visual Art & Studies" />
-    <meta property="og:description" content="An experimental 3D digital exhibition of sketches, paintings, and creative visual studies by Maliha Sanjana." />
+    <meta property="og:description" content="An experimental digital exhibition of sketches, paintings, and creative visual studies by Maliha Sanjana." />
     <meta property="og:type" content="website" />
 
     <link rel="icon" type="image/png" href="assets/butterfly.png" />
@@ -29,13 +29,13 @@
 
 <body class="art-body">
 
-    <!-- Custom Paint Pointer Follower -->
+    <!-- Custom Pointer Follower -->
     <div class="art-cursor" id="artCursor" aria-hidden="true"></div>
 
     <!-- Ambient Paint Atmosphere Canvas -->
     <canvas id="paintAtmosphereCanvas" aria-hidden="true"></canvas>
 
-    <!-- ART GALLERY INTRO SPLASH OVERLAY -->
+    <!-- ART GALLERY INTRO SPLASH OVERLAY (WATERCOLOR / INK BLOOM) -->
     <div class="art-splash-overlay" id="artSplashOverlay" aria-label="Intro splash animation">
         <canvas id="splashCanvas" class="splash-canvas"></canvas>
         <div class="splash-content">
@@ -116,7 +116,7 @@
                     <div class="art-stat-divider"></div>
                     <div class="art-stat-item">
                         <span class="stat-num">3D</span>
-                        <span class="stat-label">SPATIAL WALL</span>
+                        <span class="stat-label">GLASS WALL</span>
                     </div>
                     <div class="art-stat-divider"></div>
                     <div class="art-stat-item">
@@ -143,19 +143,6 @@
                         Monochrome & Sketches <span class="filter-count">3</span>
                     </button>
                 </div>
-
-                <!-- VIEW MODE SWITCHER (DESKTOP) -->
-                <div class="art-view-switcher">
-                    <span class="view-switcher-label">DISPLAY MODE:</span>
-                    <button class="view-mode-btn active" id="viewMode3D" title="3D Spatial Perspective Wall">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-                        3D Wall
-                    </button>
-                    <button class="view-mode-btn" id="viewModeGrid" title="Classic Gallery Grid">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-                        Grid
-                    </button>
-                </div>
             </div>
         </section>
 
@@ -164,7 +151,7 @@
             <div class="section-header-wrap">
                 <h2 class="art-section-title">FEATURED SELECTIONS</h2>
                 <div class="title-accent-line"></div>
-                <p class="section-subtext">Cinematic highlight pieces floating in spatial light</p>
+                <p class="section-subtext">Cinematic highlight pieces floating in liquid glass light</p>
             </div>
 
             <div class="art-featured-stage">
@@ -218,34 +205,59 @@
             </div>
         </section>
 
-        <!-- 3D VIRTUAL GALLERY WALL -->
+        <!-- CHROMATIC ARCHIVE SECTION -->
         <section class="art-gallery-section" id="gallery">
             <div class="section-header-wrap">
                 <h2 class="art-section-title">CHROMATIC ARCHIVE</h2>
                 <div class="title-accent-line"></div>
-                <p class="section-subtext" id="deckStatusText">Click the stacked card deck or press Reveal Collection to deal the artworks into an interactive 3D spatial wall</p>
+                <p class="section-subtext" id="deckStatusText">Click the stacked card preview or press Reveal Collection to open the gallery</p>
                 
                 <div class="deck-control-wrap">
-                    <button class="btn-deck-trigger primary active" id="btnRevealCollection" aria-label="Reveal collection by dealing cards outward">
+                    <button class="btn-deck-trigger primary active" id="btnRevealCollection" aria-label="Reveal collection gallery">
                         <span class="deck-btn-icon">🎴</span>
                         <span class="deck-btn-label">REVEAL COLLECTION</span>
                     </button>
-                    <button class="btn-deck-trigger secondary" id="btnGatherDeck" title="Collapse gallery back into stacked deck">
+                    <button class="btn-deck-trigger secondary" id="btnGatherDeck" title="Collapse gallery back into stacked preview">
                         <span class="deck-btn-icon">🃏</span>
-                        <span class="deck-btn-label">GATHER DECK</span>
+                        <span class="deck-btn-label">SHOW STACKED PREVIEW</span>
                     </button>
                 </div>
             </div>
 
-            <!-- Spatial 3D Gallery Grid Container (Starts in Deck Mode) -->
+            <!-- LIGHTWEIGHT STACKED DECK PREVIEW STAGE -->
+            <div class="deck-preview-container" id="deckPreviewStage">
+                <div class="deck-preview-stack" id="deckPreviewStack" title="Click to Reveal Gallery Collection">
+                    <div class="deck-stack-card card-top">
+                        <div class="glass-reflection-streak"></div>
+                        <img src="assets/art/a-glass-of-red-wine-and-a-rose.jpg" alt="A Glass of Red Wine & A Rose" />
+                    </div>
+                    <div class="deck-stack-card card-layer-1">
+                        <img src="assets/art/galaxy-lady.jpg" alt="Galaxy Lady" />
+                    </div>
+                    <div class="deck-stack-card card-layer-2">
+                        <img src="assets/art/in-the-world-of-art.jpg" alt="In the World of Art" />
+                    </div>
+                    <div class="deck-stack-card card-layer-3">
+                        <img src="assets/art/phoenix.jpg" alt="Phoenix" />
+                    </div>
+                    <div class="deck-stack-card card-layer-4">
+                        <img src="assets/art/a-rose.jpg" alt="A Rose" />
+                    </div>
+                    <div class="deck-click-hint">Click Deck to Open Gallery ↗</div>
+                </div>
+            </div>
+
+            <!-- CLEAN SYMMETRICAL GALLERY GRID -->
             <div class="art-gallery-viewport" id="galleryViewport">
-                <div class="art-gallery-grid deck-mode" id="galleryGrid">
+                <div class="art-gallery-grid curated-mode hidden" id="galleryGrid">
 
                     <!-- ARTWORK CARD 1 -->
-                    <div class="art-card" data-category="surreal" data-accent="rose-crimson" data-index="0" style="--depth: 15px; --rotate-x: 2.5deg; --rotate-y: -3deg; --span-col: 2;">
+                    <div class="art-card" data-category="surreal" data-accent="rose-crimson" data-index="0">
                         <div class="art-glass-frame">
                             <div class="glass-reflection-streak"></div>
-                            <img src="assets/art/a-glass-of-red-wine-and-a-rose.jpg" alt="A Glass of Red Wine & A Rose" class="art-image" loading="lazy" decoding="async" />
+                            <div class="art-image-container">
+                                <img src="assets/art/a-glass-of-red-wine-and-a-rose.jpg" alt="A Glass of Red Wine & A Rose" class="art-image" loading="lazy" decoding="async" />
+                            </div>
                             <div class="art-card-glow"></div>
                             <div class="art-card-overlay">
                                 <h3 class="art-card-title">A Glass of Red Wine & A Rose</h3>
@@ -255,10 +267,12 @@
                     </div>
 
                     <!-- ARTWORK CARD 2 -->
-                    <div class="art-card" data-category="nature" data-accent="crimson" data-index="1" style="--depth: -20px; --rotate-x: -2deg; --rotate-y: 4deg; --span-col: 1;">
+                    <div class="art-card" data-category="nature" data-accent="crimson" data-index="1">
                         <div class="art-glass-frame">
                             <div class="glass-reflection-streak"></div>
-                            <img src="assets/art/a-rose.jpg" alt="A Rose" class="art-image" loading="lazy" decoding="async" />
+                            <div class="art-image-container">
+                                <img src="assets/art/a-rose.jpg" alt="A Rose" class="art-image" loading="lazy" decoding="async" />
+                            </div>
                             <div class="art-card-glow"></div>
                             <div class="art-card-overlay">
                                 <h3 class="art-card-title">A Rose</h3>
@@ -268,10 +282,12 @@
                     </div>
 
                     <!-- ARTWORK CARD 3 -->
-                    <div class="art-card" data-category="monochrome" data-accent="monochrome" data-index="2" style="--depth: 30px; --rotate-x: 3deg; --rotate-y: -1.5deg; --span-col: 1;">
+                    <div class="art-card" data-category="monochrome" data-accent="monochrome" data-index="2">
                         <div class="art-glass-frame">
                             <div class="glass-reflection-streak"></div>
-                            <img src="assets/art/black-and-white.jpg" alt="Black & White" class="art-image" loading="lazy" decoding="async" />
+                            <div class="art-image-container">
+                                <img src="assets/art/black-and-white.jpg" alt="Black & White" class="art-image" loading="lazy" decoding="async" />
+                            </div>
                             <div class="art-card-glow"></div>
                             <div class="art-card-overlay">
                                 <h3 class="art-card-title">Black & White</h3>
@@ -281,10 +297,12 @@
                     </div>
 
                     <!-- ARTWORK CARD 4 -->
-                    <div class="art-card" data-category="surreal" data-accent="amber" data-index="3" style="--depth: -10px; --rotate-x: -1.5deg; --rotate-y: 2.5deg; --span-col: 2;">
+                    <div class="art-card" data-category="surreal" data-accent="amber" data-index="3">
                         <div class="art-glass-frame">
                             <div class="glass-reflection-streak"></div>
-                            <img src="assets/art/boho-art.jpg" alt="Boho Art" class="art-image" loading="lazy" decoding="async" />
+                            <div class="art-image-container">
+                                <img src="assets/art/boho-art.jpg" alt="Boho Art" class="art-image" loading="lazy" decoding="async" />
+                            </div>
                             <div class="art-card-glow"></div>
                             <div class="art-card-overlay">
                                 <h3 class="art-card-title">Boho Art</h3>
@@ -294,10 +312,12 @@
                     </div>
 
                     <!-- ARTWORK CARD 5 -->
-                    <div class="art-card" data-category="nature" data-accent="gold" data-index="4" style="--depth: 25px; --rotate-x: 4deg; --rotate-y: -3.5deg; --span-col: 1;">
+                    <div class="art-card" data-category="nature" data-accent="gold" data-index="4">
                         <div class="art-glass-frame">
                             <div class="glass-reflection-streak"></div>
-                            <img src="assets/art/butterfly.jpg" alt="Butterfly" class="art-image" loading="lazy" decoding="async" />
+                            <div class="art-image-container">
+                                <img src="assets/art/butterfly.jpg" alt="Butterfly" class="art-image" loading="lazy" decoding="async" />
+                            </div>
                             <div class="art-card-glow"></div>
                             <div class="art-card-overlay">
                                 <h3 class="art-card-title">Butterfly</h3>
@@ -307,10 +327,12 @@
                     </div>
 
                     <!-- ARTWORK CARD 6 -->
-                    <div class="art-card" data-category="surreal" data-accent="amber-warm" data-index="5" style="--depth: -30px; --rotate-x: -3deg; --rotate-y: 2deg; --span-col: 1;">
+                    <div class="art-card" data-category="surreal" data-accent="amber-warm" data-index="5">
                         <div class="art-glass-frame">
                             <div class="glass-reflection-streak"></div>
-                            <img src="assets/art/candle-light-date.jpg" alt="Candle Light Date" class="art-image" loading="lazy" decoding="async" />
+                            <div class="art-image-container">
+                                <img src="assets/art/candle-light-date.jpg" alt="Candle Light Date" class="art-image" loading="lazy" decoding="async" />
+                            </div>
                             <div class="art-card-glow"></div>
                             <div class="art-card-overlay">
                                 <h3 class="art-card-title">Candle Light Date</h3>
@@ -320,10 +342,12 @@
                     </div>
 
                     <!-- ARTWORK CARD 7 -->
-                    <div class="art-card" data-category="nature" data-accent="crimson" data-index="6" style="--depth: 10px; --rotate-x: 1deg; --rotate-y: -4deg; --span-col: 1;">
+                    <div class="art-card" data-category="nature" data-accent="crimson" data-index="6">
                         <div class="art-glass-frame">
                             <div class="glass-reflection-streak"></div>
-                            <img src="assets/art/cherry.jpg" alt="Cherry" class="art-image" loading="lazy" decoding="async" />
+                            <div class="art-image-container">
+                                <img src="assets/art/cherry.jpg" alt="Cherry" class="art-image" loading="lazy" decoding="async" />
+                            </div>
                             <div class="art-card-glow"></div>
                             <div class="art-card-overlay">
                                 <h3 class="art-card-title">Cherry</h3>
@@ -333,10 +357,12 @@
                     </div>
 
                     <!-- ARTWORK CARD 8 -->
-                    <div class="art-card" data-category="surreal" data-accent="warm-brown" data-index="7" style="--depth: -15px; --rotate-x: -2.5deg; --rotate-y: 3deg; --span-col: 2;">
+                    <div class="art-card" data-category="surreal" data-accent="warm-brown" data-index="7">
                         <div class="art-glass-frame">
                             <div class="glass-reflection-streak"></div>
-                            <img src="assets/art/croissant-and-a-cup-of-coffee.jpg" alt="Croissant & A Cup of Coffee" class="art-image" loading="lazy" decoding="async" />
+                            <div class="art-image-container">
+                                <img src="assets/art/croissant-and-a-cup-of-coffee.jpg" alt="Croissant & A Cup of Coffee" class="art-image" loading="lazy" decoding="async" />
+                            </div>
                             <div class="art-card-glow"></div>
                             <div class="art-card-overlay">
                                 <h3 class="art-card-title">Croissant & A Cup of Coffee</h3>
@@ -346,10 +372,12 @@
                     </div>
 
                     <!-- ARTWORK CARD 9 -->
-                    <div class="art-card" data-category="surreal" data-accent="violet-pink" data-index="8" style="--depth: 35px; --rotate-x: 3.5deg; --rotate-y: -2deg; --span-col: 1;">
+                    <div class="art-card" data-category="surreal" data-accent="violet-pink" data-index="8">
                         <div class="art-glass-frame">
                             <div class="glass-reflection-streak"></div>
-                            <img src="assets/art/dreamy.jpg" alt="Dreamy" class="art-image" loading="lazy" decoding="async" />
+                            <div class="art-image-container">
+                                <img src="assets/art/dreamy.jpg" alt="Dreamy" class="art-image" loading="lazy" decoding="async" />
+                            </div>
                             <div class="art-card-glow"></div>
                             <div class="art-card-overlay">
                                 <h3 class="art-card-title">Dreamy</h3>
@@ -359,10 +387,12 @@
                     </div>
 
                     <!-- ARTWORK CARD 10 -->
-                    <div class="art-card" data-category="nature" data-accent="emerald-teal" data-index="9" style="--depth: -5px; --rotate-x: -1deg; --rotate-y: 1.5deg; --span-col: 1;">
+                    <div class="art-card" data-category="nature" data-accent="emerald-teal" data-index="9">
                         <div class="art-glass-frame">
                             <div class="glass-reflection-streak"></div>
-                            <img src="assets/art/flower-pot.jpg" alt="Flower Pot" class="art-image" loading="lazy" decoding="async" />
+                            <div class="art-image-container">
+                                <img src="assets/art/flower-pot.jpg" alt="Flower Pot" class="art-image" loading="lazy" decoding="async" />
+                            </div>
                             <div class="art-card-glow"></div>
                             <div class="art-card-overlay">
                                 <h3 class="art-card-title">Flower Pot</h3>
@@ -372,10 +402,12 @@
                     </div>
 
                     <!-- ARTWORK CARD 11 -->
-                    <div class="art-card" data-category="portraits" data-accent="sapphire-violet" data-index="10" style="--depth: 40px; --rotate-x: 4.5deg; --rotate-y: -4deg; --span-col: 2;">
+                    <div class="art-card" data-category="portraits" data-accent="sapphire-violet" data-index="10">
                         <div class="art-glass-frame">
                             <div class="glass-reflection-streak"></div>
-                            <img src="assets/art/galaxy-lady.jpg" alt="Galaxy Lady" class="art-image" loading="lazy" decoding="async" />
+                            <div class="art-image-container">
+                                <img src="assets/art/galaxy-lady.jpg" alt="Galaxy Lady" class="art-image" loading="lazy" decoding="async" />
+                            </div>
                             <div class="art-card-glow"></div>
                             <div class="art-card-overlay">
                                 <h3 class="art-card-title">Galaxy Lady</h3>
@@ -385,10 +417,12 @@
                     </div>
 
                     <!-- ARTWORK CARD 12 -->
-                    <div class="art-card" data-category="surreal" data-accent="violet-cyan" data-index="11" style="--depth: -25px; --rotate-x: -3deg; --rotate-y: 3.5deg; --span-col: 1;">
+                    <div class="art-card" data-category="surreal" data-accent="violet-cyan" data-index="11">
                         <div class="art-glass-frame">
                             <div class="glass-reflection-streak"></div>
-                            <img src="assets/art/hold-onto.jpg" alt="Hold Onto" class="art-image" loading="lazy" decoding="async" />
+                            <div class="art-image-container">
+                                <img src="assets/art/hold-onto.jpg" alt="Hold Onto" class="art-image" loading="lazy" decoding="async" />
+                            </div>
                             <div class="art-card-glow"></div>
                             <div class="art-card-overlay">
                                 <h3 class="art-card-title">Hold Onto</h3>
@@ -398,10 +432,12 @@
                     </div>
 
                     <!-- ARTWORK CARD 13 -->
-                    <div class="art-card" data-category="surreal" data-accent="gold-amber" data-index="12" style="--depth: 20px; --rotate-x: 2deg; --rotate-y: -2.5deg; --span-col: 1;">
+                    <div class="art-card" data-category="surreal" data-accent="gold-amber" data-index="12">
                         <div class="art-glass-frame">
                             <div class="glass-reflection-streak"></div>
-                            <img src="assets/art/hourglass.jpg" alt="Hourglass" class="art-image" loading="lazy" decoding="async" />
+                            <div class="art-image-container">
+                                <img src="assets/art/hourglass.jpg" alt="Hourglass" class="art-image" loading="lazy" decoding="async" />
+                            </div>
                             <div class="art-card-glow"></div>
                             <div class="art-card-overlay">
                                 <h3 class="art-card-title">Hourglass</h3>
@@ -411,10 +447,12 @@
                     </div>
 
                     <!-- ARTWORK CARD 14 -->
-                    <div class="art-card" data-category="nature" data-accent="cyan-ice" data-index="13" style="--depth: -35px; --rotate-x: -4deg; --rotate-y: 4deg; --span-col: 2;">
+                    <div class="art-card" data-category="nature" data-accent="cyan-ice" data-index="13">
                         <div class="art-glass-frame">
                             <div class="glass-reflection-streak"></div>
-                            <img src="assets/art/icyland.jpg" alt="Icyland" class="art-image" loading="lazy" decoding="async" />
+                            <div class="art-image-container">
+                                <img src="assets/art/icyland.jpg" alt="Icyland" class="art-image" loading="lazy" decoding="async" />
+                            </div>
                             <div class="art-card-glow"></div>
                             <div class="art-card-overlay">
                                 <h3 class="art-card-title">Icyland</h3>
@@ -424,10 +462,12 @@
                     </div>
 
                     <!-- ARTWORK CARD 15 -->
-                    <div class="art-card" data-category="surreal" data-accent="violet-crimson" data-index="14" style="--depth: 30px; --rotate-x: 3deg; --rotate-y: -3deg; --span-col: 2;">
+                    <div class="art-card" data-category="surreal" data-accent="violet-crimson" data-index="14">
                         <div class="art-glass-frame">
                             <div class="glass-reflection-streak"></div>
-                            <img src="assets/art/in-the-world-of-art.jpg" alt="In the World of Art" class="art-image" loading="lazy" decoding="async" />
+                            <div class="art-image-container">
+                                <img src="assets/art/in-the-world-of-art.jpg" alt="In the World of Art" class="art-image" loading="lazy" decoding="async" />
+                            </div>
                             <div class="art-card-glow"></div>
                             <div class="art-card-overlay">
                                 <h3 class="art-card-title">In the World of Art</h3>
@@ -437,10 +477,12 @@
                     </div>
 
                     <!-- ARTWORK CARD 16 -->
-                    <div class="art-card" data-category="nature" data-accent="emerald" data-index="15" style="--depth: -10px; --rotate-x: -1.5deg; --rotate-y: 2deg; --span-col: 1;">
+                    <div class="art-card" data-category="nature" data-accent="emerald" data-index="15">
                         <div class="art-glass-frame">
                             <div class="glass-reflection-streak"></div>
-                            <img src="assets/art/landscape.jpg" alt="Landscape" class="art-image" loading="lazy" decoding="async" />
+                            <div class="art-image-container">
+                                <img src="assets/art/landscape.jpg" alt="Landscape" class="art-image" loading="lazy" decoding="async" />
+                            </div>
                             <div class="art-card-glow"></div>
                             <div class="art-card-overlay">
                                 <h3 class="art-card-title">Landscape</h3>
@@ -450,10 +492,12 @@
                     </div>
 
                     <!-- ARTWORK CARD 17 -->
-                    <div class="art-card" data-category="surreal" data-accent="crimson-violet" data-index="16" style="--depth: 15px; --rotate-x: 2deg; --rotate-y: -1deg; --span-col: 1;">
+                    <div class="art-card" data-category="surreal" data-accent="crimson-violet" data-index="16">
                         <div class="art-glass-frame">
                             <div class="glass-reflection-streak"></div>
-                            <img src="assets/art/lips-and-an-eyeball.jpg" alt="Lips & An Eyeball" class="art-image" loading="lazy" decoding="async" />
+                            <div class="art-image-container">
+                                <img src="assets/art/lips-and-an-eyeball.jpg" alt="Lips & An Eyeball" class="art-image" loading="lazy" decoding="async" />
+                            </div>
                             <div class="art-card-glow"></div>
                             <div class="art-card-overlay">
                                 <h3 class="art-card-title">Lips & An Eyeball</h3>
@@ -463,10 +507,12 @@
                     </div>
 
                     <!-- ARTWORK CARD 18 -->
-                    <div class="art-card" data-category="portraits" data-accent="pink-blush" data-index="17" style="--depth: -20px; --rotate-x: -2.5deg; --rotate-y: 3.5deg; --span-col: 1;">
+                    <div class="art-card" data-category="portraits" data-accent="pink-blush" data-index="17">
                         <div class="art-glass-frame">
                             <div class="glass-reflection-streak"></div>
-                            <img src="assets/art/mirror-mirror.jpg" alt="Mirror Mirror" class="art-image" loading="lazy" decoding="async" />
+                            <div class="art-image-container">
+                                <img src="assets/art/mirror-mirror.jpg" alt="Mirror Mirror" class="art-image" loading="lazy" decoding="async" />
+                            </div>
                             <div class="art-card-glow"></div>
                             <div class="art-card-overlay">
                                 <h3 class="art-card-title">Mirror Mirror</h3>
@@ -476,10 +522,12 @@
                     </div>
 
                     <!-- ARTWORK CARD 19 -->
-                    <div class="art-card" data-category="nature" data-accent="amber-gold" data-index="18" style="--depth: 25px; --rotate-x: 3.5deg; --rotate-y: -2.5deg; --span-col: 1;">
+                    <div class="art-card" data-category="nature" data-accent="amber-gold" data-index="18">
                         <div class="art-glass-frame">
                             <div class="glass-reflection-streak"></div>
-                            <img src="assets/art/mr-owl.jpg" alt="Mr. Owl" class="art-image" loading="lazy" decoding="async" />
+                            <div class="art-image-container">
+                                <img src="assets/art/mr-owl.jpg" alt="Mr. Owl" class="art-image" loading="lazy" decoding="async" />
+                            </div>
                             <div class="art-card-glow"></div>
                             <div class="art-card-overlay">
                                 <h3 class="art-card-title">Mr. Owl</h3>
@@ -489,10 +537,12 @@
                     </div>
 
                     <!-- ARTWORK CARD 20 -->
-                    <div class="art-card" data-category="surreal" data-accent="coral" data-index="19" style="--depth: -15px; --rotate-x: -1deg; --rotate-y: 2.5deg; --span-col: 1;">
+                    <div class="art-card" data-category="surreal" data-accent="coral" data-index="19">
                         <div class="art-glass-frame">
                             <div class="glass-reflection-streak"></div>
-                            <img src="assets/art/nub.jpg" alt="Nub" class="art-image" loading="lazy" decoding="async" />
+                            <div class="art-image-container">
+                                <img src="assets/art/nub.jpg" alt="Nub" class="art-image" loading="lazy" decoding="async" />
+                            </div>
                             <div class="art-card-glow"></div>
                             <div class="art-card-overlay">
                                 <h3 class="art-card-title">Nub</h3>
@@ -502,10 +552,12 @@
                     </div>
 
                     <!-- ARTWORK CARD 21 -->
-                    <div class="art-card" data-category="monochrome" data-accent="monochrome-slate" data-index="20" style="--depth: 30px; --rotate-x: 4deg; --rotate-y: -3deg; --span-col: 2;">
+                    <div class="art-card" data-category="monochrome" data-accent="monochrome-slate" data-index="20">
                         <div class="art-glass-frame">
                             <div class="glass-reflection-streak"></div>
-                            <img src="assets/art/panda.jpg" alt="Panda" class="art-image" loading="lazy" decoding="async" />
+                            <div class="art-image-container">
+                                <img src="assets/art/panda.jpg" alt="Panda" class="art-image" loading="lazy" decoding="async" />
+                            </div>
                             <div class="art-card-glow"></div>
                             <div class="art-card-overlay">
                                 <h3 class="art-card-title">Panda</h3>
@@ -515,10 +567,12 @@
                     </div>
 
                     <!-- ARTWORK CARD 22 -->
-                    <div class="art-card" data-category="surreal" data-accent="fire-orange" data-index="21" style="--depth: -30px; --rotate-x: -3.5deg; --rotate-y: 4deg; --span-col: 2;">
+                    <div class="art-card" data-category="surreal" data-accent="fire-orange" data-index="21">
                         <div class="art-glass-frame">
                             <div class="glass-reflection-streak"></div>
-                            <img src="assets/art/phoenix.jpg" alt="Phoenix" class="art-image" loading="lazy" decoding="async" />
+                            <div class="art-image-container">
+                                <img src="assets/art/phoenix.jpg" alt="Phoenix" class="art-image" loading="lazy" decoding="async" />
+                            </div>
                             <div class="art-card-glow"></div>
                             <div class="art-card-overlay">
                                 <h3 class="art-card-title">Phoenix</h3>
@@ -528,10 +582,12 @@
                     </div>
 
                     <!-- ARTWORK CARD 23 -->
-                    <div class="art-card" data-category="portraits" data-accent="warm-amber" data-index="22" style="--depth: 10px; --rotate-x: 1.5deg; --rotate-y: -2deg; --span-col: 1;">
+                    <div class="art-card" data-category="portraits" data-accent="warm-amber" data-index="22">
                         <div class="art-glass-frame">
                             <div class="glass-reflection-streak"></div>
-                            <img src="assets/art/realism.jpg" alt="Realism" class="art-image" loading="lazy" decoding="async" />
+                            <div class="art-image-container">
+                                <img src="assets/art/realism.jpg" alt="Realism" class="art-image" loading="lazy" decoding="async" />
+                            </div>
                             <div class="art-card-glow"></div>
                             <div class="art-card-overlay">
                                 <h3 class="art-card-title">Realism</h3>
@@ -541,10 +597,12 @@
                     </div>
 
                     <!-- ARTWORK CARD 24 -->
-                    <div class="art-card" data-category="nature" data-accent="teal-blue" data-index="23" style="--depth: -20px; --rotate-x: -2deg; --rotate-y: 3deg; --span-col: 1;">
+                    <div class="art-card" data-category="nature" data-accent="teal-blue" data-index="23">
                         <div class="art-glass-frame">
                             <div class="glass-reflection-streak"></div>
-                            <img src="assets/art/serenity.jpg" alt="Serenity" class="art-image" loading="lazy" decoding="async" />
+                            <div class="art-image-container">
+                                <img src="assets/art/serenity.jpg" alt="Serenity" class="art-image" loading="lazy" decoding="async" />
+                            </div>
                             <div class="art-card-glow"></div>
                             <div class="art-card-overlay">
                                 <h3 class="art-card-title">Serenity</h3>
@@ -554,10 +612,12 @@
                     </div>
 
                     <!-- ARTWORK CARD 25 -->
-                    <div class="art-card" data-category="surreal" data-accent="cyan-magenta" data-index="24" style="--depth: 25px; --rotate-x: 3deg; --rotate-y: -1.5deg; --span-col: 1;">
+                    <div class="art-card" data-category="surreal" data-accent="cyan-magenta" data-index="24">
                         <div class="art-glass-frame">
                             <div class="glass-reflection-streak"></div>
-                            <img src="assets/art/splash-splash.jpg" alt="Splash Splash" class="art-image" loading="lazy" decoding="async" />
+                            <div class="art-image-container">
+                                <img src="assets/art/splash-splash.jpg" alt="Splash Splash" class="art-image" loading="lazy" decoding="async" />
+                            </div>
                             <div class="art-card-glow"></div>
                             <div class="art-card-overlay">
                                 <h3 class="art-card-title">Splash Splash</h3>
@@ -567,10 +627,12 @@
                     </div>
 
                     <!-- ARTWORK CARD 26 -->
-                    <div class="art-card" data-category="monochrome" data-accent="silver-graphite" data-index="25" style="--depth: -10px; --rotate-x: -1.5deg; --rotate-y: 2deg; --span-col: 1;">
+                    <div class="art-card" data-category="monochrome" data-accent="silver-graphite" data-index="25">
                         <div class="art-glass-frame">
                             <div class="glass-reflection-streak"></div>
-                            <img src="assets/art/timewatch.jpg" alt="Timewatch" class="art-image" loading="lazy" decoding="async" />
+                            <div class="art-image-container">
+                                <img src="assets/art/timewatch.jpg" alt="Timewatch" class="art-image" loading="lazy" decoding="async" />
+                            </div>
                             <div class="art-card-glow"></div>
                             <div class="art-card-overlay">
                                 <h3 class="art-card-title">Timewatch</h3>
@@ -580,10 +642,12 @@
                     </div>
 
                     <!-- ARTWORK CARD 27 -->
-                    <div class="art-card" data-category="surreal" data-accent="violet" data-index="26" style="--depth: 35px; --rotate-x: 4deg; --rotate-y: -4deg; --span-col: 1;">
+                    <div class="art-card" data-category="surreal" data-accent="violet" data-index="26">
                         <div class="art-glass-frame">
                             <div class="glass-reflection-streak"></div>
-                            <img src="assets/art/tinker.jpg" alt="Tinker" class="art-image" loading="lazy" decoding="async" />
+                            <div class="art-image-container">
+                                <img src="assets/art/tinker.jpg" alt="Tinker" class="art-image" loading="lazy" decoding="async" />
+                            </div>
                             <div class="art-card-glow"></div>
                             <div class="art-card-overlay">
                                 <h3 class="art-card-title">Tinker</h3>
@@ -593,10 +657,12 @@
                     </div>
 
                     <!-- ARTWORK CARD 28 -->
-                    <div class="art-card" data-category="nature" data-accent="emerald-gold" data-index="27" style="--depth: -25px; --rotate-x: -3deg; --rotate-y: 3.5deg; --span-col: 1;">
+                    <div class="art-card" data-category="nature" data-accent="emerald-gold" data-index="27">
                         <div class="art-glass-frame">
                             <div class="glass-reflection-streak"></div>
-                            <img src="assets/art/touch-of-nature.jpg" alt="Touch of Nature" class="art-image" loading="lazy" decoding="async" />
+                            <div class="art-image-container">
+                                <img src="assets/art/touch-of-nature.jpg" alt="Touch of Nature" class="art-image" loading="lazy" decoding="async" />
+                            </div>
                             <div class="art-card-glow"></div>
                             <div class="art-card-overlay">
                                 <h3 class="art-card-title">Touch of Nature</h3>
@@ -606,10 +672,12 @@
                     </div>
 
                     <!-- ARTWORK CARD 29 -->
-                    <div class="art-card" data-category="portraits" data-accent="deep-crimson" data-index="28" style="--depth: 20px; --rotate-x: 2.5deg; --rotate-y: -2.5deg; --span-col: 1;">
+                    <div class="art-card" data-category="portraits" data-accent="deep-crimson" data-index="28">
                         <div class="art-glass-frame">
                             <div class="glass-reflection-streak"></div>
-                            <img src="assets/art/vampire-lips.jpg" alt="Vampire Lips" class="art-image" loading="lazy" decoding="async" />
+                            <div class="art-image-container">
+                                <img src="assets/art/vampire-lips.jpg" alt="Vampire Lips" class="art-image" loading="lazy" decoding="async" />
+                            </div>
                             <div class="art-card-glow"></div>
                             <div class="art-card-overlay">
                                 <h3 class="art-card-title">Vampire Lips</h3>
@@ -619,10 +687,12 @@
                     </div>
 
                     <!-- ARTWORK CARD 30 -->
-                    <div class="art-card" data-category="nature" data-accent="sapphire-teal" data-index="29" style="--depth: -5px; --rotate-x: -1deg; --rotate-y: 1.5deg; --span-col: 2;">
+                    <div class="art-card" data-category="nature" data-accent="sapphire-teal" data-index="29">
                         <div class="art-glass-frame">
                             <div class="glass-reflection-streak"></div>
-                            <img src="assets/art/waterfall.jpg" alt="Waterfall" class="art-image" loading="lazy" decoding="async" />
+                            <div class="art-image-container">
+                                <img src="assets/art/waterfall.jpg" alt="Waterfall" class="art-image" loading="lazy" decoding="async" />
+                            </div>
                             <div class="art-card-glow"></div>
                             <div class="art-card-overlay">
                                 <h3 class="art-card-title">Waterfall</h3>

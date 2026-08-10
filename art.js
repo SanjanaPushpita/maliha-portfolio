@@ -1,13 +1,13 @@
 /* ==========================================================================
-   MALIHA'S CHROMATIC ATELIER — ART GALLERY LOGIC (art.js)
-   Real Paint Splash Intro, Gathered Deck of Cards, Card Deal Animation, & Lightbox
+   MALIHA'S CHROMATIC ATELIER — REFINED ART GALLERY LOGIC (art.js)
+   Soft Watercolor Splash, Lightweight Deck Preview, Staggered Reveal & Lightbox
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const isMobile = window.innerWidth <= 768;
 
-    // 1. ALL 30 ARTWORK DATA MATRIX
+    // ALL 30 ARTWORK DATA MATRIX
     const ARTWORKS = [
         { id: 0, file: 'a-glass-of-red-wine-and-a-rose.jpg', title: 'A Glass of Red Wine & A Rose', category: 'surreal', accent: 'rose-crimson' },
         { id: 1, file: 'a-rose.jpg', title: 'A Rose', category: 'nature', accent: 'crimson' },
@@ -43,32 +43,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentLightboxIndex = 0;
 
-    // 2. INITIALIZE MODULES
-    initSplashSequence(prefersReducedMotion);
+    // INITIALIZE MODULES
+    initWatercolorSplash(prefersReducedMotion);
     initCursorFollower();
     initAtmosphereCanvas(prefersReducedMotion);
     initNavBehavior();
-    initDeckInteraction();
-    init3DSpatialWall(!prefersReducedMotion && !isMobile);
+    initLightweightDeckInteraction();
+    initCardHoverTilt(!prefersReducedMotion && !isMobile);
     initCategoryFilter();
-    initViewSwitcher();
     initLightbox(ARTWORKS);
 
-    // Update Footer Year
+    // Footer Year
     const yearEl = document.getElementById('artYear');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 });
 
 /* ==========================================================================
-   1. ORGANIC LIQUID PAINT SPLASH INTRO SEQUENCE
+   1. SOFT WATERCOLOR / INK-BLOOM SPLASH ENGINE
    ========================================================================== */
-function initSplashSequence(reducedMotion) {
+function initWatercolorSplash(reducedMotion) {
     const splash = document.getElementById('artSplashOverlay');
     const canvas = document.getElementById('splashCanvas');
     const colorSwipe = document.getElementById('splashColorSwipe');
     if (!splash || !canvas) return;
 
-    const SPLASH_KEY = 'art_atelier_splash_seen_v2';
+    const SPLASH_KEY = 'art_atelier_splash_seen_v3';
     const alreadySeen = sessionStorage.getItem(SPLASH_KEY);
 
     if (reducedMotion || alreadySeen) {
@@ -85,91 +84,58 @@ function initSplashSequence(reducedMotion) {
         height = canvas.height = window.innerHeight;
     });
 
-    const splashColors = [
-        'rgba(255, 77, 109, 0.85)',
-        'rgba(230, 57, 70, 0.85)',
-        'rgba(251, 86, 7, 0.85)',
-        'rgba(255, 209, 102, 0.85)',
-        'rgba(155, 93, 229, 0.85)',
-        'rgba(0, 245, 212, 0.85)',
-        'rgba(67, 97, 238, 0.85)',
-        'rgba(247, 168, 196, 0.85)'
+    const inkColors = [
+        { r: 247, g: 168, b: 196 }, // Rose pink
+        { r: 155, g: 93,  b: 229 }, // Violet
+        { r: 67,  g: 97,  b: 238 }, // Sapphire
+        { r: 0,   g: 245, b: 212 }, // Soft cyan
+        { r: 251, g: 86,  b: 7   }, // Soft orange
+        { r: 230, g: 57,  b: 70  }  // Crimson
     ];
 
-    class OrganicPaintSplash {
+    class InkBloom {
         constructor() {
             this.reset();
         }
         reset() {
             this.x = Math.random() * width;
             this.y = Math.random() * height;
-            this.color = splashColors[Math.floor(Math.random() * splashColors.length)];
-            this.points = [];
-            const numPoints = Math.floor(Math.random() * 12) + 12;
-            this.baseRadius = Math.random() * 20 + 5;
-            this.maxRadius = Math.random() * 140 + 70;
-            this.currentRadius = this.baseRadius;
-            this.delay = Math.random() * 50;
-            this.frame = 0;
+            this.color = inkColors[Math.floor(Math.random() * inkColors.length)];
+            this.radius = 10;
+            this.maxRadius = Math.random() * 180 + 120;
             this.alpha = 0;
-            this.growth = Math.random() * 3 + 1.5;
-
-            for (let i = 0; i < numPoints; i++) {
-                const angle = (Math.PI * 2 / numPoints) * i;
-                const distOffset = Math.random() * 0.5 + 0.75;
-                this.points.push({ angle, distOffset });
-            }
-
-            this.splatters = Array.from({ length: 8 }, () => ({
-                angle: Math.random() * Math.PI * 2,
-                distMult: Math.random() * 0.8 + 1.2,
-                r: Math.random() * 8 + 3
-            }));
+            this.growth = Math.random() * 1.5 + 0.8;
+            this.delay = Math.random() * 40;
+            this.frame = 0;
         }
         update() {
             this.frame++;
             if (this.frame < this.delay) return;
 
-            if (this.currentRadius < this.maxRadius) {
-                this.currentRadius += this.growth;
-                this.alpha = Math.min(0.9, this.alpha + 0.07);
+            if (this.radius < this.maxRadius) {
+                this.radius += this.growth;
+                this.alpha = Math.min(0.35, this.alpha + 0.015);
             } else {
-                this.alpha -= 0.015;
+                this.alpha -= 0.008;
             }
         }
         draw() {
             if (this.alpha <= 0 || this.frame < this.delay) return;
             ctx.save();
-            ctx.globalAlpha = this.alpha;
-            ctx.fillStyle = this.color;
+            const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);
+            grad.addColorStop(0, `rgba(${this.color.r}, ${this.color.g}, ${this.color.b}, ${this.alpha})`);
+            grad.addColorStop(0.5, `rgba(${this.color.r}, ${this.color.g}, ${this.color.b}, ${this.alpha * 0.4})`);
+            grad.addColorStop(1, 'transparent');
 
+            ctx.fillStyle = grad;
             ctx.beginPath();
-            for (let i = 0; i < this.points.length; i++) {
-                const pt = this.points[i];
-                const r = this.currentRadius * pt.distOffset;
-                const px = this.x + Math.cos(pt.angle) * r;
-                const py = this.y + Math.sin(pt.angle) * r;
-                if (i === 0) ctx.moveTo(px, py);
-                else ctx.lineTo(px, py);
-            }
-            ctx.closePath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
             ctx.fill();
-
-            // Render Splatter Drops
-            this.splatters.forEach(sp => {
-                const dist = this.currentRadius * sp.distMult;
-                const sx = this.x + Math.cos(sp.angle) * dist;
-                const sy = this.y + Math.sin(sp.angle) * dist;
-                ctx.beginPath();
-                ctx.arc(sx, sy, sp.r * (this.currentRadius / this.maxRadius), 0, Math.PI * 2);
-                ctx.fill();
-            });
-
             ctx.restore();
         }
     }
 
-    const splashes = Array.from({ length: 22 }, () => new OrganicPaintSplash());
+    const blooms = Array.from({ length: 18 }, () => new InkBloom());
     let animId;
     let startTime = null;
 
@@ -177,19 +143,19 @@ function initSplashSequence(reducedMotion) {
         if (!startTime) startTime = timestamp;
         const elapsed = timestamp - startTime;
 
-        ctx.fillStyle = 'rgba(6, 5, 9, 0.22)';
+        ctx.fillStyle = 'rgba(6, 5, 9, 0.18)';
         ctx.fillRect(0, 0, width, height);
 
-        splashes.forEach(s => {
-            s.update();
-            s.draw();
+        blooms.forEach(b => {
+            b.update();
+            b.draw();
         });
 
-        if (elapsed > 2000 && colorSwipe) {
+        if (elapsed > 1900 && colorSwipe) {
             colorSwipe.classList.add('active');
         }
 
-        if (elapsed < 2700) {
+        if (elapsed < 2500) {
             animId = requestAnimationFrame(renderSplash);
         } else {
             cancelAnimationFrame(animId);
@@ -245,10 +211,9 @@ function initAtmosphereCanvas(reducedMotion) {
     });
 
     const blobs = [
-        { x: width * 0.2, y: height * 0.3, vx: 0.3, vy: 0.2, r: 350, color: 'rgba(255, 77, 109, 0.08)' },
-        { x: width * 0.8, y: height * 0.6, vx: -0.2, vy: 0.3, r: 420, color: 'rgba(155, 93, 229, 0.08)' },
-        { x: width * 0.5, y: height * 0.8, vx: 0.4, vy: -0.2, r: 380, color: 'rgba(0, 245, 212, 0.06)' },
-        { x: width * 0.3, y: height * 0.7, vx: -0.3, vy: -0.3, r: 300, color: 'rgba(251, 86, 7, 0.07)' }
+        { x: width * 0.2, y: height * 0.3, vx: 0.2, vy: 0.15, r: 380, color: 'rgba(247, 168, 196, 0.06)' },
+        { x: width * 0.8, y: height * 0.6, vx: -0.15, vy: 0.2, r: 420, color: 'rgba(155, 93, 229, 0.06)' },
+        { x: width * 0.5, y: height * 0.8, vx: 0.25, vy: -0.15, r: 360, color: 'rgba(0, 245, 212, 0.05)' }
     ];
 
     function drawAtmosphere() {
@@ -310,109 +275,83 @@ function initNavBehavior() {
 }
 
 /* ==========================================================================
-   5. GATHERED DECK OF CARDS & CARD-DEAL / THROW INTERACTION
+   5. LIGHTWEIGHT DECK PREVIEW & STAGGERED REVEAL LOGIC
    ========================================================================== */
-function initDeckInteraction() {
-    const grid = document.getElementById('galleryGrid');
+function initLightweightDeckInteraction() {
+    const deckPreview = document.getElementById('deckPreviewStage');
+    const deckStack = document.getElementById('deckPreviewStack');
+    const galleryGrid = document.getElementById('galleryGrid');
     const btnReveal = document.getElementById('btnRevealCollection');
     const btnGather = document.getElementById('btnGatherDeck');
     const statusText = document.getElementById('deckStatusText');
     const cards = document.querySelectorAll('.art-card');
 
-    if (!grid || !cards.length) return;
+    if (!galleryGrid || !cards.length) return;
 
-    // Assign deck indices for stacked 3D deck appearance
-    cards.forEach((card, index) => {
-        card.style.setProperty('--deck-i', index);
-    });
-
-    function dealCollection() {
-        if (!grid.classList.contains('deck-mode')) return;
-
-        grid.classList.add('dealt-animating');
-        grid.classList.remove('deck-mode');
-        grid.classList.add('spatial-mode');
+    function revealGallery() {
+        if (deckPreview) deckPreview.classList.add('hidden');
+        galleryGrid.classList.remove('hidden');
 
         if (btnReveal) btnReveal.classList.remove('active');
         if (btnGather) btnGather.classList.add('active');
-        if (statusText) statusText.textContent = 'Artworks revealed in 3D spatial wall. Click any card to open the immersive viewer.';
+        if (statusText) statusText.textContent = 'Gallery revealed. Click any artwork to open the high-definition viewer';
 
-        setTimeout(() => {
-            grid.classList.remove('dealt-animating');
-        }, 850);
+        // Fast, smooth staggered entrance for cards
+        cards.forEach((card, idx) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(24px) scale(0.96)';
+            setTimeout(() => {
+                card.style.transition = 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0) scale(1)';
+            }, Math.min(idx * 30, 450));
+        });
     }
 
-    function gatherCollection() {
-        if (grid.classList.contains('deck-mode')) return;
-
-        grid.classList.add('dealt-animating');
-        grid.classList.remove('spatial-mode', 'linear-mode');
-        grid.classList.add('deck-mode');
+    function showDeckPreview() {
+        galleryGrid.classList.add('hidden');
+        if (deckPreview) deckPreview.classList.remove('hidden');
 
         if (btnGather) btnGather.classList.remove('active');
         if (btnReveal) btnReveal.classList.add('active');
-        if (statusText) statusText.textContent = 'Click the stacked card deck or press Reveal Collection to deal the artworks into an interactive 3D spatial wall';
-
-        setTimeout(() => {
-            grid.classList.remove('dealt-animating');
-        }, 850);
+        if (statusText) statusText.textContent = 'Click the stacked card preview or press Reveal Collection to open the gallery';
     }
 
-    if (btnReveal) btnReveal.addEventListener('click', dealCollection);
-    if (btnGather) btnGather.addEventListener('click', gatherCollection);
-
-    // Clicking deck container directly triggers deal
-    grid.addEventListener('click', (e) => {
-        if (grid.classList.contains('deck-mode')) {
-            // Check if card clicked inside deck
-            const card = e.target.closest('.art-card');
-            if (card) {
-                e.stopPropagation();
-                dealCollection();
-            }
-        }
-    });
+    if (btnReveal) btnReveal.addEventListener('click', revealGallery);
+    if (btnGather) btnGather.addEventListener('click', showDeckPreview);
+    if (deckStack) deckStack.addEventListener('click', revealGallery);
 }
 
 /* ==========================================================================
-   6. 3D SPATIAL WALL HOVER TILT & SIBLING RECESSION
+   6. SYMMETRICAL CARD HOVER TILT & SIBLING RECESSION
    ========================================================================== */
-function init3DSpatialWall(enabled) {
+function initCardHoverTilt(enabled) {
     if (!enabled) return;
 
     const cards = document.querySelectorAll('.art-card');
-    const grid = document.getElementById('galleryGrid');
 
     cards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
-            if (grid.classList.contains('deck-mode') || grid.classList.contains('linear-mode')) return;
-
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
 
-            const rotateX = ((y - centerY) / centerY) * -5;
-            const rotateY = ((x - centerX) / centerX) * 5;
+            const rotateX = ((y - centerY) / centerY) * -4;
+            const rotateY = ((x - centerX) / centerX) * 4;
 
-            card.style.transform = `translateZ(50px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+            card.style.transform = `translateY(-8px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
         });
 
         card.addEventListener('mouseenter', () => {
-            if (grid.classList.contains('deck-mode')) return;
             cards.forEach(c => {
                 if (c !== card) c.classList.add('receder');
             });
         });
 
         card.addEventListener('mouseleave', () => {
-            if (grid.classList.contains('deck-mode')) return;
-            const baseDepth = card.style.getPropertyValue('--depth') || '0px';
-            const baseRotX = card.style.getPropertyValue('--rotate-x') || '0deg';
-            const baseRotY = card.style.getPropertyValue('--rotate-y') || '0deg';
-            card.style.transform = `translateZ(${baseDepth}) rotateX(${baseRotX}) rotateY(${baseRotY})`;
-
+            card.style.transform = 'translateY(0) rotateX(0deg) rotateY(0deg) scale(1)';
             cards.forEach(c => c.classList.remove('receder'));
         });
     });
@@ -449,32 +388,7 @@ function initCategoryFilter() {
 }
 
 /* ==========================================================================
-   8. VIEW MODE SWITCHER
-   ========================================================================== */
-function initViewSwitcher() {
-    const btn3D = document.getElementById('viewMode3D');
-    const btnGrid = document.getElementById('viewModeGrid');
-    const grid = document.getElementById('galleryGrid');
-
-    if (!btn3D || !btnGrid || !grid) return;
-
-    btn3D.addEventListener('click', () => {
-        btn3D.classList.add('active');
-        btnGrid.classList.remove('active');
-        grid.classList.remove('linear-mode', 'deck-mode');
-        grid.classList.add('spatial-mode');
-    });
-
-    btnGrid.addEventListener('click', () => {
-        btnGrid.classList.add('active');
-        btn3D.classList.remove('active');
-        grid.classList.remove('spatial-mode', 'deck-mode');
-        grid.classList.add('linear-mode');
-    });
-}
-
-/* ==========================================================================
-   9. FULLSCREEN ARTWORK LIGHTBOX MODAL
+   8. FULLSCREEN ARTWORK LIGHTBOX MODAL
    ========================================================================== */
 function initLightbox(artworksData) {
     const lightbox = document.getElementById('artLightbox');
@@ -485,7 +399,6 @@ function initLightbox(artworksData) {
     const imgEl = document.getElementById('lightboxImg');
     const titleEl = document.getElementById('lightboxTitle');
     const indexEl = document.getElementById('lightboxIndex');
-    const grid = document.getElementById('galleryGrid');
 
     if (!lightbox || !imgEl || !titleEl) return;
 
@@ -537,8 +450,7 @@ function initLightbox(artworksData) {
 
     // Attach Click Events to Cards
     document.querySelectorAll('.art-card, .featured-card').forEach(card => {
-        card.addEventListener('click', (e) => {
-            if (grid && grid.classList.contains('deck-mode')) return; // Deck click handles deal
+        card.addEventListener('click', () => {
             const idx = card.dataset.index;
             openLightbox(idx);
         });
