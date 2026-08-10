@@ -53,6 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initCategoryFilter();
     initLightbox(ARTWORKS);
 
+    // NEW INTERACTIONS: Click Paint Splash & Floating Glass Bubbles
+    initClickSplashInteraction();
+    initBubbleMode();
+
     // Footer Year
     const yearEl = document.getElementById('artYear');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -494,3 +498,86 @@ function initLightbox(artworksData) {
         }
     }
 }
+
+/* ==========================================================================
+   9. CLICK / TOUCH PIGMENT BLOOM SPLASH INTERACTION
+   ========================================================================== */
+function initClickSplashInteraction() {
+    const splashGradients = [
+        'radial-gradient(circle, rgba(247, 168, 196, 0.7) 0%, rgba(155, 93, 229, 0.4) 40%, rgba(0, 245, 212, 0.2) 70%, transparent 100%)',
+        'radial-gradient(circle, rgba(0, 245, 212, 0.7) 0%, rgba(67, 97, 238, 0.4) 40%, rgba(247, 168, 196, 0.2) 70%, transparent 100%)',
+        'radial-gradient(circle, rgba(251, 86, 7, 0.7) 0%, rgba(230, 57, 70, 0.4) 40%, rgba(155, 93, 229, 0.2) 70%, transparent 100%)',
+        'radial-gradient(circle, rgba(155, 93, 229, 0.7) 0%, rgba(247, 168, 196, 0.4) 40%, rgba(0, 245, 212, 0.2) 70%, transparent 100%)'
+    ];
+
+    document.body.addEventListener('click', (e) => {
+        // Ignore clicks on interactive controls
+        if (e.target.closest('button, a, input, select, .art-card, .featured-card, .art-lightbox-panel')) {
+            return;
+        }
+
+        const splash = document.createElement('div');
+        splash.className = 'click-paint-splash';
+        splash.style.left = `${e.clientX}px`;
+        splash.style.top = `${e.clientY}px`;
+        splash.style.background = splashGradients[Math.floor(Math.random() * splashGradients.length)];
+
+        document.body.appendChild(splash);
+
+        setTimeout(() => {
+            if (splash.parentNode) splash.remove();
+        }, 1400);
+    });
+}
+
+/* ==========================================================================
+   10. FLOATING GLASS SOAP BUBBLES MODE
+   ========================================================================== */
+function initBubbleMode() {
+    const bubbleBtn = document.getElementById('artBubbleBtn');
+    if (!bubbleBtn) return;
+
+    let isSpawning = false;
+
+    bubbleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (isSpawning) return;
+        isSpawning = true;
+
+        const numBubbles = 16;
+        for (let i = 0; i < numBubbles; i++) {
+            setTimeout(() => {
+                createGlassBubble();
+                if (i === numBubbles - 1) {
+                    setTimeout(() => { isSpawning = false; }, 1000);
+                }
+            }, i * 180);
+        }
+    });
+
+    function createGlassBubble() {
+        const bubble = document.createElement('div');
+        bubble.className = 'glass-soap-bubble';
+
+        const size = Math.floor(Math.random() * 45) + 30; // 30px to 75px
+        const startX = Math.random() * 85 + 5; // 5vw to 90vw
+        const driftX = (Math.random() - 0.5) * 160; // -80px to 80px drift
+        const duration = Math.random() * 3 + 6; // 6s to 9s float
+        const rot = Math.random() * 360;
+
+        bubble.style.width = `${size}px`;
+        bubble.style.height = `${size}px`;
+        bubble.style.left = `${startX}vw`;
+        bubble.style.bottom = `-80px`;
+        bubble.style.setProperty('--drift-x', `${driftX}px`);
+        bubble.style.setProperty('--rot', `${rot}deg`);
+        bubble.style.setProperty('--duration', `${duration}s`);
+
+        document.body.appendChild(bubble);
+
+        setTimeout(() => {
+            if (bubble.parentNode) bubble.remove();
+        }, duration * 1000);
+    }
+}
+

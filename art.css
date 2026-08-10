@@ -213,6 +213,24 @@ body.art-body {
     padding: 0.75rem 2rem;
 }
 
+/* ==========================================================================
+   HEADER & LIQUID GLASS NAV
+   ========================================================================== */
+
+.art-header-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1.25rem 2rem;
+    transition: padding 0.3s ease;
+}
+
+.art-header-wrapper.scrolled {
+    padding: 0.75rem 2rem;
+}
+
 .art-nav {
     max-width: 1200px;
     margin: 0 auto;
@@ -220,14 +238,27 @@ body.art-body {
     align-items: center;
     justify-content: space-between;
     padding: 0.75rem 1.75rem;
-    background: rgba(14, 12, 20, 0.78);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    background: linear-gradient(135deg, rgba(22, 18, 34, 0.85) 0%, rgba(14, 11, 22, 0.88) 100%);
+    backdrop-filter: blur(28px) saturate(200%);
+    -webkit-backdrop-filter: blur(28px) saturate(200%);
     border-radius: 9999px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+    border: 1.5px solid rgba(255, 255, 255, 0.38);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 25px rgba(247, 168, 196, 0.22), inset 0 2px 3px rgba(255, 255, 255, 0.75), inset 0 -2px 5px rgba(155, 93, 229, 0.25);
     position: relative;
     overflow: hidden;
+}
+
+.art-nav::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border-top-left-radius: 9999px;
+    border-top-right-radius: 9999px;
+    pointer-events: none;
 }
 
 .art-logo {
@@ -236,6 +267,8 @@ body.art-body {
     gap: 0.75rem;
     text-decoration: none;
     color: var(--art-text-primary);
+    position: relative;
+    z-index: 2;
 }
 
 .art-logo-mark {
@@ -274,6 +307,8 @@ body.art-body {
     align-items: center;
     gap: 0.5rem;
     list-style: none;
+    position: relative;
+    z-index: 2;
 }
 
 .art-nav-link {
@@ -289,7 +324,7 @@ body.art-body {
 .art-nav-link:hover,
 .art-nav-link.active {
     color: #ffffff;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.12);
 }
 
 .art-back-btn {
@@ -298,19 +333,45 @@ body.art-body {
     font-weight: 600;
     letter-spacing: 0.05em;
     color: var(--art-blush);
-    background: linear-gradient(135deg, rgba(247, 168, 196, 0.18), rgba(155, 93, 229, 0.18));
-    border: 1px solid rgba(247, 168, 196, 0.4);
+    background: linear-gradient(135deg, rgba(247, 168, 196, 0.22), rgba(155, 93, 229, 0.22));
+    border: 1px solid rgba(247, 168, 196, 0.5);
     border-radius: 9999px;
     text-decoration: none;
-    box-shadow: 0 4px 15px rgba(247, 168, 196, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(247, 168, 196, 0.25), inset 0 1px 1.5px rgba(255, 255, 255, 0.5);
     transition: all 0.3s var(--ease-liquid);
 }
 
 .art-back-btn:hover {
     color: #ffffff;
-    background: linear-gradient(135deg, rgba(247, 168, 196, 0.35), rgba(155, 93, 229, 0.35));
-    border-color: rgba(247, 168, 196, 0.7);
+    background: linear-gradient(135deg, rgba(247, 168, 196, 0.4), rgba(155, 93, 229, 0.4));
+    border-color: rgba(247, 168, 196, 0.8);
     transform: translateY(-1px) scale(1.03);
+}
+
+/* Tiny Bubble Button inside Navbar */
+.art-bubble-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.85) 0%, rgba(247, 168, 196, 0.4) 35%, rgba(0, 245, 212, 0.3) 70%, rgba(155, 93, 229, 0.25) 100%);
+    border: 1.5px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 15px rgba(247, 168, 196, 0.4), inset 0 1.5px 2px rgba(255, 255, 255, 0.95);
+    cursor: pointer;
+    transition: transform 0.35s var(--ease-liquid), box-shadow 0.35s ease;
+    backdrop-filter: blur(10px);
+}
+
+.art-bubble-btn:hover {
+    transform: scale(1.15) rotate(15deg);
+    box-shadow: 0 8px 25px rgba(247, 168, 196, 0.6), 0 0 15px rgba(0, 245, 212, 0.5);
+}
+
+.bubble-btn-icon {
+    font-size: 1rem;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
 }
 
 .art-mobile-toggle {
@@ -467,43 +528,141 @@ body.art-body {
     font-weight: 300;
 }
 
-/* Stats Bar */
+/* Stats Bar (Ultra 3D Liquid Glass) */
 .art-stats-bar {
     display: flex;
     align-items: center;
     gap: 2rem;
     margin-top: 1rem;
-    padding: 0.8rem 2rem;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 0.85rem 2.2rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(247, 168, 196, 0.1) 35%, rgba(155, 93, 229, 0.12) 70%, rgba(0, 245, 212, 0.08) 100%);
+    border: 1.5px solid rgba(255, 255, 255, 0.38);
     border-radius: 9999px;
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(20px) saturate(200%);
+    -webkit-backdrop-filter: blur(20px) saturate(200%);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45), 0 6px 25px rgba(247, 168, 196, 0.22), inset 0 2px 3px rgba(255, 255, 255, 0.75), inset 0 -1.5px 3px rgba(155, 93, 229, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.art-stats-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border-top-left-radius: 9999px;
+    border-top-right-radius: 9999px;
+    pointer-events: none;
 }
 
 .art-stat-item {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    z-index: 2;
 }
 
 .stat-num {
     font-family: var(--font-display);
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--art-blush);
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(247, 168, 196, 0.5);
 }
 
 .stat-label {
     font-family: var(--font-mono);
     font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    color: var(--art-text-muted);
+    letter-spacing: 0.18em;
+    color: var(--art-blush);
 }
 
 .art-stat-divider {
     width: 1px;
-    height: 24px;
-    background: rgba(255, 255, 255, 0.12);
+    height: 26px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
+    position: relative;
+    z-index: 2;
+}
+
+/* ==========================================================================
+   INTERACTIVE CLICK PAINT SPLASH & FLOATING GLASS SOAP BUBBLES
+   ========================================================================== */
+
+/* Click/Touch Pigment Bloom Splash */
+.click-paint-splash {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: clickSplashBloom 1.4s var(--ease-out-cubic) forwards;
+    filter: blur(12px);
+}
+
+@keyframes clickSplashBloom {
+    0% {
+        width: 12px;
+        height: 12px;
+        opacity: 0.85;
+        transform: translate(-50%, -50%) scale(0.3);
+    }
+    50% {
+        opacity: 0.6;
+    }
+    100% {
+        width: 180px;
+        height: 180px;
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1.6);
+    }
+}
+
+/* Floating Glass Soap Bubbles */
+.glass-soap-bubble {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9997;
+    border-radius: 50%;
+    background: radial-gradient(circle at 32% 32%, rgba(255, 255, 255, 0.75) 0%, rgba(247, 168, 196, 0.35) 30%, rgba(0, 245, 212, 0.22) 65%, rgba(155, 93, 229, 0.15) 100%);
+    border: 1.5px solid rgba(255, 255, 255, 0.6);
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.8), 0 8px 25px rgba(247, 168, 196, 0.25);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    animation: floatBubbleUp var(--duration, 7s) cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.glass-soap-bubble::before {
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: 20%;
+    width: 25%;
+    height: 25%;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.85);
+    filter: blur(1px);
+}
+
+@keyframes floatBubbleUp {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 0, 0) rotate(0deg) scale(0.6);
+    }
+    15% {
+        opacity: 0.9;
+    }
+    85% {
+        opacity: 0.85;
+    }
+    100% {
+        opacity: 0;
+        transform: translate3d(var(--drift-x, 40px), -105vh, 0) rotate(var(--rot, 360deg)) scale(1.1);
+    }
 }
 
 /* Category Filter Controls */
