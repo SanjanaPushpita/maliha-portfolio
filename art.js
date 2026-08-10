@@ -500,7 +500,7 @@ function initLightbox(artworksData) {
 }
 
 /* ==========================================================================
-   9. CLICK / TOUCH PIGMENT BLOOM SPLASH INTERACTION
+   9. CLICK & MOBILE TOUCH SCROLL PIGMENT BLOOM SPLASH INTERACTION
    ========================================================================== */
 function initClickSplashInteraction() {
     const splashGradients = [
@@ -510,16 +510,11 @@ function initClickSplashInteraction() {
         'radial-gradient(circle, rgba(155, 93, 229, 0.7) 0%, rgba(247, 168, 196, 0.4) 40%, rgba(0, 245, 212, 0.2) 70%, transparent 100%)'
     ];
 
-    document.body.addEventListener('click', (e) => {
-        // Ignore clicks on interactive controls
-        if (e.target.closest('button, a, input, select, .art-card, .featured-card, .art-lightbox-panel')) {
-            return;
-        }
-
+    function spawnSplash(x, y) {
         const splash = document.createElement('div');
         splash.className = 'click-paint-splash';
-        splash.style.left = `${e.clientX}px`;
-        splash.style.top = `${e.clientY}px`;
+        splash.style.left = `${x}px`;
+        splash.style.top = `${y}px`;
         splash.style.background = splashGradients[Math.floor(Math.random() * splashGradients.length)];
 
         document.body.appendChild(splash);
@@ -527,7 +522,41 @@ function initClickSplashInteraction() {
         setTimeout(() => {
             if (splash.parentNode) splash.remove();
         }, 1400);
+    }
+
+    // Desktop & Mobile Single Click / Tap
+    document.body.addEventListener('click', (e) => {
+        if (e.target.closest('button, a, input, select, .art-card, .featured-card, .art-lightbox-panel')) {
+            return;
+        }
+        spawnSplash(e.clientX, e.clientY);
     });
+
+    // Mobile Touch Drag / Scroll Gestures (Throttled for Performance)
+    let lastTouchTime = 0;
+    let lastTouchX = 0;
+    let lastTouchY = 0;
+
+    document.body.addEventListener('touchmove', (e) => {
+        if (e.target.closest('button, a, input, select, .art-card, .featured-card, .art-lightbox-panel')) {
+            return;
+        }
+
+        const now = Date.now();
+        if (now - lastTouchTime < 180) return; // Rate limit: max 1 splash per 180ms
+
+        const touch = e.touches[0];
+        if (!touch) return;
+
+        const dist = Math.hypot(touch.clientX - lastTouchX, touch.clientY - lastTouchY);
+        if (dist < 40) return; // Minimum move distance threshold
+
+        lastTouchTime = now;
+        lastTouchX = touch.clientX;
+        lastTouchY = touch.clientY;
+
+        spawnSplash(touch.clientX, touch.clientY);
+    }, { passive: true });
 }
 
 /* ==========================================================================

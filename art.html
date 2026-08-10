@@ -65,18 +65,18 @@
                 <li><a href="#featured" class="art-nav-link">Featured</a></li>
                 <li><a href="#gallery" class="art-nav-link">Gallery</a></li>
                 <li><a href="index.html" class="art-back-btn" title="Return to main AI portfolio">← BACK TO PORTFOLIO</a></li>
-                <li>
-                    <button class="art-bubble-btn" id="artBubbleBtn" aria-label="Trigger floating glass bubbles mode" title="Floating Glass Bubbles Mode">
-                        <span class="bubble-btn-icon">🫧</span>
-                    </button>
-                </li>
             </ul>
 
-            <button class="art-mobile-toggle" id="artMobileToggle" aria-label="Toggle Art Navigation Menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div class="art-nav-actions">
+                <button class="art-bubble-btn" id="artBubbleBtn" aria-label="Trigger floating glass bubbles mode" title="Floating Glass Bubbles Mode">
+                    <span class="bubble-btn-icon">🫧</span>
+                </button>
+                <button class="art-mobile-toggle" id="artMobileToggle" aria-label="Toggle Art Navigation Menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </nav>
     </header>
 
@@ -160,50 +160,62 @@
             </div>
 
             <div class="art-featured-stage">
-                <!-- Highlight 1: Galaxy Lady -->
-                <div class="featured-card accent-sapphire" data-index="10">
-                    <div class="featured-glass-wrapper">
-                        <img src="assets/art/galaxy-lady.jpg" alt="Galaxy Lady" class="featured-img" loading="lazy" decoding="async" />
-                        <div class="featured-glow"></div>
-                        <div class="featured-meta">
+                <!-- Highlight 1: Serenity -->
+                <div class="art-card featured-card" data-category="nature" data-accent="teal-blue" data-index="23">
+                    <div class="art-glass-frame">
+                        <div class="glass-reflection-streak"></div>
+                        <div class="art-image-container">
+                            <img src="assets/art/serenity.jpg" alt="Serenity" class="art-image" loading="lazy" decoding="async" />
+                        </div>
+                        <div class="art-card-glow"></div>
+                        <div class="art-card-overlay">
                             <span class="featured-badge">SPOTLIGHT</span>
-                            <h3 class="featured-title">Galaxy Lady</h3>
+                            <h3 class="art-card-title">Serenity</h3>
                         </div>
                     </div>
                 </div>
 
-                <!-- Highlight 2: In the World of Art -->
-                <div class="featured-card accent-crimson" data-index="14">
-                    <div class="featured-glass-wrapper">
-                        <img src="assets/art/in-the-world-of-art.jpg" alt="In the World of Art" class="featured-img" loading="lazy" decoding="async" />
-                        <div class="featured-glow"></div>
-                        <div class="featured-meta">
+                <!-- Highlight 2: Realism -->
+                <div class="art-card featured-card" data-category="portraits" data-accent="warm-amber" data-index="22">
+                    <div class="art-glass-frame">
+                        <div class="glass-reflection-streak"></div>
+                        <div class="art-image-container">
+                            <img src="assets/art/realism.jpg" alt="Realism" class="art-image" loading="lazy" decoding="async" />
+                        </div>
+                        <div class="art-card-glow"></div>
+                        <div class="art-card-overlay">
                             <span class="featured-badge">SPOTLIGHT</span>
-                            <h3 class="featured-title">In the World of Art</h3>
+                            <h3 class="art-card-title">Realism</h3>
                         </div>
                     </div>
                 </div>
 
-                <!-- Highlight 3: A Glass of Red Wine & A Rose -->
-                <div class="featured-card accent-rose" data-index="0">
-                    <div class="featured-glass-wrapper">
-                        <img src="assets/art/a-glass-of-red-wine-and-a-rose.jpg" alt="A Glass of Red Wine & A Rose" class="featured-img" loading="lazy" decoding="async" />
-                        <div class="featured-glow"></div>
-                        <div class="featured-meta">
+                <!-- Highlight 3: Galaxy Lady -->
+                <div class="art-card featured-card" data-category="portraits" data-accent="sapphire-violet" data-index="10">
+                    <div class="art-glass-frame">
+                        <div class="glass-reflection-streak"></div>
+                        <div class="art-image-container">
+                            <img src="assets/art/galaxy-lady.jpg" alt="Galaxy Lady" class="art-image" loading="lazy" decoding="async" />
+                        </div>
+                        <div class="art-card-glow"></div>
+                        <div class="art-card-overlay">
                             <span class="featured-badge">SPOTLIGHT</span>
-                            <h3 class="featured-title">A Glass of Red Wine & A Rose</h3>
+                            <h3 class="art-card-title">Galaxy Lady</h3>
                         </div>
                     </div>
                 </div>
 
                 <!-- Highlight 4: Phoenix -->
-                <div class="featured-card accent-amber" data-index="21">
-                    <div class="featured-glass-wrapper">
-                        <img src="assets/art/phoenix.jpg" alt="Phoenix" class="featured-img" loading="lazy" decoding="async" />
-                        <div class="featured-glow"></div>
-                        <div class="featured-meta">
+                <div class="art-card featured-card" data-category="surreal" data-accent="fire-orange" data-index="21">
+                    <div class="art-glass-frame">
+                        <div class="glass-reflection-streak"></div>
+                        <div class="art-image-container">
+                            <img src="assets/art/phoenix.jpg" alt="Phoenix" class="art-image" loading="lazy" decoding="async" />
+                        </div>
+                        <div class="art-card-glow"></div>
+                        <div class="art-card-overlay">
                             <span class="featured-badge">SPOTLIGHT</span>
-                            <h3 class="featured-title">Phoenix</h3>
+                            <h3 class="art-card-title">Phoenix</h3>
                         </div>
                     </div>
                 </div>
