@@ -356,22 +356,30 @@ body.art-body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.85) 0%, rgba(247, 168, 196, 0.4) 35%, rgba(0, 245, 212, 0.3) 70%, rgba(155, 93, 229, 0.25) 100%);
-    border: 1.5px solid rgba(255, 255, 255, 0.7);
-    box-shadow: 0 4px 15px rgba(247, 168, 196, 0.4), inset 0 1.5px 2px rgba(255, 255, 255, 0.95);
+    background: radial-gradient(circle at 35% 35%, #ffffff 0%, rgba(247, 168, 196, 0.95) 45%, rgba(0, 245, 212, 0.85) 75%, rgba(155, 93, 229, 0.8) 100%);
+    border: 1.8px solid #ffffff;
+    box-shadow: 0 4px 18px rgba(247, 168, 196, 0.65), 0 0 15px rgba(0, 245, 212, 0.55), inset 0 2px 3px #ffffff;
     cursor: pointer;
     transition: transform 0.35s var(--ease-liquid), box-shadow 0.35s ease;
     backdrop-filter: blur(10px);
+    color: #0b0914;
 }
 
 .art-bubble-btn:hover {
-    transform: scale(1.15) rotate(15deg);
-    box-shadow: 0 8px 25px rgba(247, 168, 196, 0.6), 0 0 15px rgba(0, 245, 212, 0.5);
+    transform: scale(1.18) rotate(15deg);
+    box-shadow: 0 8px 28px rgba(247, 168, 196, 0.85), 0 0 22px rgba(0, 245, 212, 0.75), inset 0 2.5px 3px #ffffff;
 }
 
-.bubble-btn-icon {
-    font-size: 1rem;
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+.bubble-svg-icon {
+    width: 18px;
+    height: 18px;
+    color: #0c0a15;
+    filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.8));
+    transition: transform 0.3s ease;
+}
+
+.art-bubble-btn:hover .bubble-svg-icon {
+    transform: scale(1.1);
 }
 
 .art-mobile-toggle {
@@ -975,18 +983,18 @@ body.art-body {
     position: relative;
     cursor: pointer;
     border-radius: 18px;
-    transition: transform 0.4s var(--ease-liquid), box-shadow 0.4s ease, opacity 0.4s ease;
+    transition: transform 0.4s var(--ease-liquid), opacity 0.4s ease;
     opacity: 1;
 }
 
 .art-card.receder {
-    opacity: 0.65;
-    transform: scale(0.97);
+    opacity: 0.6;
+    transform: scale(0.96);
 }
 
 .art-card:hover {
-    z-index: 10;
-    transform: translateY(-8px) scale(1.03);
+    z-index: 12;
+    transform: translateY(-12px) scale(1.04);
 }
 
 /* Visible Luxury Glass Frame */
@@ -997,11 +1005,12 @@ body.art-body {
     background: var(--art-bg-card);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    box-shadow: inset 0 1.5px 2px rgba(255, 255, 255, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.05), 0 15px 35px rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0 1.5px 2px rgba(255, 255, 255, 0.7), inset 0 0 15px rgba(255, 255, 255, 0.08), 0 18px 45px rgba(0, 0, 0, 0.55);
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 .art-image-container {
@@ -1360,6 +1369,45 @@ body.art-body {
 
 /* Responsive Media Queries */
 @media (max-width: 900px) {
+    .art-header-wrapper {
+        padding: 0.75rem 1.2rem;
+    }
+
+    .art-nav {
+        padding: 0.5rem 1.15rem;
+    }
+
+    .art-logo {
+        gap: 0.55rem;
+    }
+
+    .art-logo-mark {
+        font-size: 1.25rem;
+    }
+
+    .art-logo-name {
+        font-size: 0.8rem;
+    }
+
+    .art-logo-sub {
+        font-size: 0.55rem;
+        letter-spacing: 0.2em;
+    }
+
+    .art-nav-actions {
+        gap: 0.5rem;
+    }
+
+    .art-bubble-btn {
+        width: 32px;
+        height: 32px;
+    }
+
+    .bubble-svg-icon {
+        width: 16px;
+        height: 16px;
+    }
+
     .art-nav-links { display: none; }
     .art-mobile-toggle { display: flex; }
     .art-featured-stage { grid-template-columns: repeat(2, 1fr); }
@@ -1368,11 +1416,19 @@ body.art-body {
 }
 
 @media (max-width: 600px) {
+    .art-header-wrapper {
+        padding: 0.5rem 0.85rem;
+    }
+
+    .art-nav {
+        padding: 0.45rem 0.95rem;
+    }
+
     .art-featured-stage { grid-template-columns: 1fr; }
     .art-gallery-grid { grid-template-columns: 1fr; gap: 1.5rem; }
     .art-stats-bar { flex-direction: column; gap: 0.5rem; border-radius: 16px; }
     .art-stat-divider { width: 40px; height: 1px; }
-    .art-hero-section { padding-top: 7.5rem; }
+    .art-hero-section { padding-top: 6.8rem; }
     .lightbox-nav-btn { width: 40px; height: 40px; }
     .deck-preview-stack { width: 260px; height: 320px; }
 }
