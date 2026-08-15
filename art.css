@@ -1014,9 +1014,10 @@ body.art-body {
 .art-card[data-accent="warm-brown"],
 .art-card[data-accent="warm-amber"],
 .art-card[data-accent="fire-orange"],
-.art-card[data-accent="coral"] {
-    --accent-glow-primary: rgba(251, 86, 7, 0.75);
-    --accent-glow-secondary: rgba(255, 209, 102, 0.55);
+.art-card[data-accent="coral"],
+.art-card[data-accent="luffy-red-gold"] {
+    --accent-glow-primary: rgba(230, 57, 70, 0.8);
+    --accent-glow-secondary: rgba(255, 209, 102, 0.6);
 }
 
 .art-card[data-accent="monochrome"],

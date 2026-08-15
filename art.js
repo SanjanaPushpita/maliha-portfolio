@@ -38,7 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 26, file: 'tinker.jpg', title: 'Tinker', category: 'surreal', accent: 'violet' },
         { id: 27, file: 'touch-of-nature.jpg', title: 'Touch of Nature', category: 'nature', accent: 'emerald-gold' },
         { id: 28, file: 'vampire-lips.jpg', title: 'Vampire Lips', category: 'portraits', accent: 'deep-crimson' },
-        { id: 29, file: 'waterfall.jpg', title: 'Waterfall', category: 'nature', accent: 'sapphire-teal' }
+        { id: 29, file: 'waterfall.jpg', title: 'Waterfall', category: 'nature', accent: 'sapphire-teal' },
+        { id: 30, file: 'monkey-d-luffy.jpeg', title: 'Monkey D. Luffy', category: 'portraits', accent: 'luffy-red-gold' }
     ];
 
     let currentLightboxIndex = 0;
